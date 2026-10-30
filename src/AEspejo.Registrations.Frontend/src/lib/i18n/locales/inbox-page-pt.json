@@ -1,0 +1,14 @@
+{
+    "inboxPage":  {
+                      "athleteFile":  "ficha do atleta",
+                      "minutesLeft":  "faltam {{time}}",
+                      "minutes":  "{{count}} min",
+                      "hours":  "{{count}} h",
+                      "hoursMinutes":  "{{hours}} h {{minutes}} min",
+                      "approvedTemplate":  "Modelo aprovado pela Meta",
+                      "chooseTemplate":  "Escolha um modelo…",
+                      "noTemplates":  "A conta ainda não tem nenhum modelo aprovado.",
+                      "parameter":  "Parâmetro {{number}}",
+                      "policyNotice":  "A Meta só permite retomar o contato fora da janela de 24 horas com um modelo aprovado. Ao ser entregue, o cliente volta a poder responder com texto livre."
+                  }
+}

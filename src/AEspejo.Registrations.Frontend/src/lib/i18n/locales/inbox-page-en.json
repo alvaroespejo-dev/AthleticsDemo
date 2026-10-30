@@ -1,0 +1,14 @@
+{
+    "inboxPage":  {
+                      "athleteFile":  "athlete file",
+                      "minutesLeft":  "{{time}} left",
+                      "minutes":  "{{count}} min",
+                      "hours":  "{{count}} h",
+                      "hoursMinutes":  "{{hours}} h {{minutes}} min",
+                      "approvedTemplate":  "Template approved by Meta",
+                      "chooseTemplate":  "Choose a template…",
+                      "noTemplates":  "The account has no approved template yet.",
+                      "parameter":  "Parameter {{number}}",
+                      "policyNotice":  "Meta only allows resuming contact outside the 24-hour window with an approved template. Once delivered, the customer can reply with free text again."
+                  }
+}

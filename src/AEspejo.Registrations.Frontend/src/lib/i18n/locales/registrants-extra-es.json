@@ -1,0 +1,17 @@
+{
+  "registrants": {
+    "description": "Listado y estado de pago de los participantes.",
+    "collect": "Cobrar",
+    "collectRevert": "Cobrar / Revertir",
+    "roleCollect": "Su rol no permite registrar pagos",
+    "notCollectable": "Inscripción {{estado}}: no admite cobros",
+    "roleBib": "Su rol no permite asignar dorsales",
+    "noBib": "No lleva dorsal en estado {{estado}}",
+    "roleReactivate": "Solo administración puede reactivar",
+    "onlyExpiredOrCanceled": "Solo se reactivan inscripciones expiradas o anuladas",
+    "roleCancel": "Solo administración puede anular",
+    "revertPaymentFirst": "Tiene pagos acreditados: reviértalos primero",
+    "cantCancel": "No se puede anular inscripción {{estado}}",
+    "batchHelp": "El resultado se aplicará a {{count}} inscripciones seleccionadas."
+  }
+}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Redirigiendo… | Atletics Demo</title>
+  </head>
+  <body>
+    <p>Redirigiendo a la inscripción…</p>
+
+    <noscript>
+      <p>Habilita JavaScript, o volvé al <a href="/">inicio</a>.</p>
+    </noscript>
+
+    <script type="module">
+      // Enlace corto de inscripción: /inscripciones/{slug} -> {VITE_APP_URL}/inscripcion/{slug}.
+      // staticwebapp.config.json reescribe /inscripciones/* a este archivo sin cambiar la URL
+      // que ve el navegador (a diferencia de un redirect), así que location.pathname todavía
+      // trae el slug tal cual lo tipeó o lo compartieron.
+      const slug = location.pathname.replace(/^\/inscripciones\/?/, '').replace(/\/$/, '')
+
+      if (slug) {
+        location.replace(`${import.meta.env.VITE_APP_URL}/inscripcion/${encodeURIComponent(slug)}`)
+      } else {
+        location.replace('/')
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+node_modules
+dist
+
+# El .env.production sí va versionado (ver el comentario dentro del archivo).
+.env.local
+.env.*.local

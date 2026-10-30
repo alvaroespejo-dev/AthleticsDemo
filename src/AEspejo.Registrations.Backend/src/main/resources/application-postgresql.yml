@@ -1,0 +1,13 @@
+# PostgreSQL profile. Activate with SPRING_PROFILES_ACTIVE=postgresql; the default profile uses SQLite.
+# Secrets are injected through environment variables.
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/registrations}
+    username: ${DB_USER:registrations}
+    password: ${DB_PASSWORD:}
+    hikari:
+      maximum-pool-size: 10
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    locations: classpath:db/migration/common,classpath:db/migration/{vendor}

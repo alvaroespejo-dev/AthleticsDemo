@@ -1,0 +1,8 @@
+{
+  "audience": {
+    "field": "Campo",
+    "operator": "Operador",
+    "value": "Valor",
+    "segmentSaved": "Se guardó el segmento «{{name}}»."
+  }
+}

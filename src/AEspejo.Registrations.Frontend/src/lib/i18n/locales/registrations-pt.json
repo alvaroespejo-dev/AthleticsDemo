@@ -1,0 +1,67 @@
+{
+    "registrations":  {
+                          "result":  {
+                                         "Finished":  "✓ Finalizou",
+                                         "Dropped":  "⊘ Desistiu",
+                                         "NoShow":  "✗ Não compareceu"
+                                     },
+                          "writeTo":  "Escrever para {{name}} pelo WhatsApp",
+                          "transactionHelp":  "O que consta no comprovante do banco. Não pode se repetir em todo o sistema: é o que impede creditar duas vezes o mesmo depósito.",
+                          "payerHelp":  "Quem consta como titular da transferência.",
+                          "missingNotice":  "Com este valor ainda faltariam {{amount}}: a inscrição ficará em observação.",
+                          "surplusNotice":  "Seriam pagos {{amount}} a mais, registrados como saldo a favor.",
+                          "reasonHelp":  "Fica salvo nas observações da inscrição.",
+                          "cancelHelp":  "A inscrição deixa de contar e a vaga volta a ficar disponível. O atleta poderá se inscrever de novo no evento.",
+                          "reactivateHelp":  "Ela volta a ficar pendente com uma nova janela de reserva. Como ao expirar ou cancelar a vaga tinha sido liberada, verifica-se que a modalidade ainda tenha lugar e que o atleta não tenha se inscrito de novo: se alguma das duas falhar, a operação é recusada.",
+                          "bibHelp":  "Deixar vazio remove o número de peito atribuído. Não pode se repetir dentro do evento.",
+                          "bibOutOfRange":  "O número de peito {{bib}} está fora da faixa {{from}}–{{to}} de {{modality}}. Pode ser salvo mesmo assim, mas vale conferir.",
+                          "waiverAccepted":  "Aceito em {{date}}",
+                          "waiverIp":  " desde {{ip}}",
+                          "unsubscribed":  "Descadastrado em {{date}}",
+                          "optIn":  "Autorizado",
+                          "optInDate":  " em {{date}}",
+                          "noOptIn":  "Sem autorização — fica fora das campanhas",
+                          "originalDocument":  "{{number}} (original: {{original}})",
+                          "statusChanged":  "Inscrição atualizada.",
+                          "greeting":  "Olá {{name}}!",
+                          "reference":  "Sua inscrição em {{event}} ({{modality}}), código {{code}}",
+                          "confirmedMessage":  "{{greeting}} {{reference}} está confirmada. Nos vemos na largada!",
+                          "pendingMessage":  "{{greeting}} {{reference}} consta como {{status}}. O saldo é {{balance}}. Ao transferir, envie o número da transação para confirmarmos.",
+                          "documentType":  {
+                                               "Ci":  "CI",
+                                               "Dni":  "DNI",
+                                               "Passport":  "Passaporte",
+                                               "ForeignerId":  "RNE",
+                                               "Rut":  "RUT",
+                                               "Cpf":  "CPF",
+                                               "Other":  "Outro"
+                                           },
+                          "rule":  {
+                                       "None":  "Sem regra",
+                                       "TransactionNumber":  "Por número da transação",
+                                       "AmountAndPayer":  "Por valor e pagador",
+                                       "Manual":  "Manual"
+                                   },
+                          "order":  {
+                                        "DateDesc":  "Mais recentes",
+                                        "DateAsc":  "Mais antigos",
+                                        "LastName":  "Sobrenome",
+                                        "Bib":  "Número de peito",
+                                        "Modality":  "Modalidade"
+                                    },
+                          "batchHelp":  "Será aplicado a {{count}} inscrições selecionadas. As que não estiverem pagas, ou cujo saldo Athlete Portal não possa ser revertido, são ignoradas.",
+                          "statusLabel":  {
+                                              "Draft":  "Rascunho",
+                                              "Pending":  "Pendente",
+                                              "Paid":  "Paga",
+                                              "UnderReview":  "Em análise",
+                                              "Expired":  "Expirada",
+                                              "Cancelled":  "Cancelada",
+                                              "Refunded":  "Reembolsada"
+                                          },
+                          "withoutResult":  "Sem resultado",
+                          "pendingCount":  "Pendentes",
+                          "selected":  "selecionados",
+                          "pageOf":  "de"
+                      }
+}

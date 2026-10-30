@@ -1,0 +1,14 @@
+{
+  "routes": [
+    { "route": "/inscripciones/*", "rewrite": "/redirect.html" }
+  ],
+  "navigationFallback": {
+    "rewrite": "/panel/index.html",
+    "exclude": ["/assets/*", "/panel/*", "*.{svg,png,jpg,ico,css,js}"]
+  },
+  "globalHeaders": {
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+  }
+}

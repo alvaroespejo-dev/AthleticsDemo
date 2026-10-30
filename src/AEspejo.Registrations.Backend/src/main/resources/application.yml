@@ -1,0 +1,78 @@
+# API configuration. Secrets are injected through environment variables.
+server:
+  port: 5183
+
+spring:
+  application:
+    name: registrations-backend
+  # SQLite by default: the database is a file under App_Data, created on the first start. Set
+  # SPRING_PROFILES_ACTIVE=postgresql to use PostgreSQL instead (see application-postgresql.yml).
+  datasource:
+    url: ${DB_URL:jdbc:sqlite:App_Data/registrations.db?foreign_keys=true&busy_timeout=10000&journal_mode=WAL&date_class=TEXT}
+    hikari:
+      # SQLite allows one writer at a time; a small pool plus busy_timeout keeps the webhook and the jobs from failing.
+      maximum-pool-size: 5
+  jpa:
+    open-in-view: false
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
+    hibernate:
+      ddl-auto: validate
+      naming:
+        physical-strategy: com.aespejo.registrations.infrastructure.persistence.PascalCasePhysicalNamingStrategy
+    properties:
+      hibernate.jdbc.time_zone: UTC
+  flyway:
+    enabled: true
+    # The {vendor} folder holds the schema of the database in use; common holds the reference data.
+    locations: classpath:db/migration/common,classpath:db/migration/{vendor}
+  messages:
+    # Spanish is the base language (messages.properties). Do not fall back to the system locale.
+    fallback-to-system-locale: false
+
+# Security settings.
+security:
+  initial-admin-password: ${INITIAL_ADMIN_PASSWORD:}
+
+jwt:
+  issuer: AEspejo.Registrations
+  audience: AEspejo.Registrations
+  secret: ${JWT_SECRET:}
+  expiration-minutes: 480
+
+auth0:
+  domain: dev-wdk6vgyyd4k8clc5.us.auth0.com
+  audience: https://ecotrail-api.local
+
+cors:
+  origins: []
+
+seed:
+  demo-event: false
+
+brand:
+  fixed-code:
+
+# WhatsApp Cloud API. Tokens and app secrets come from environment variables, never from this file. Each brand
+# overrides the global block under whatsapp.brands.<code>, for example WHATSAPP_BRANDS_ECOTRAIL_TOKEN.
+whatsapp:
+  provider: ${WHATSAPP_PROVIDER:simulated}
+  base-url: https://graph.facebook.com
+  version: v21.0
+  business-account-id: ${WHATSAPP_BUSINESS_ACCOUNT_ID:}
+  phone-number-id: ${WHATSAPP_PHONE_NUMBER_ID:}
+  token: ${WHATSAPP_TOKEN:}
+  template-language: es
+  messages-per-minute: 60
+  webhook:
+    verify-token: ${WHATSAPP_WEBHOOK_VERIFY_TOKEN:}
+    app-secret: ${WHATSAPP_WEBHOOK_APP_SECRET:}
+    require-signature: true
+
+files:
+  base-path: App_Data/uploads
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

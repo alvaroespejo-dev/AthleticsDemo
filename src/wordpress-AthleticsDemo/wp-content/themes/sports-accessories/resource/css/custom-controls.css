@@ -1,0 +1,186 @@
+/* ==========================================================================
+Toggle Switch
+========================================================================== */
+
+.toggle-switch-control .customize-control-title {
+    display: inline-block;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 64px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    float: right;
+}
+
+.toggle-switch .toggle-switch-checkbox {
+    display: none;
+}
+
+.toggle-switch .toggle-switch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #ddd;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.toggle-switch-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.2s ease-in 0s;
+}
+
+.toggle-switch-inner:before,
+.toggle-switch-inner:after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 22px;
+    padding: 0;
+    line-height: 22px;
+    font-size: 14px;
+    color: white;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.toggle-switch-inner:before {
+    content: "ON";
+    padding-left: 8px;
+    background-color: #000;
+    color: #fff;
+}
+
+.toggle-switch-inner:after {
+    content: "OFF";
+    padding-right: 8px;
+    background-color: #eee;
+    color: #999;
+    text-align: right;
+}
+
+.toggle-switch-switch {
+    display: block;
+    width: 16px;
+    margin: 3px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 38px;
+    border: 2px solid #ddd;
+    border-radius: 0;
+    transition: all 0.2s ease-in 0s;
+}
+
+.toggle-switch-checkbox:checked+.toggle-switch-label .toggle-switch-inner {
+    margin-left: 0;
+}
+
+.toggle-switch-checkbox:checked+.toggle-switch-label .toggle-switch-switch {
+    right: 0px;
+}
+
+h3.accordion-section-title {
+    margin: 0 !important;
+}
+
+/* Serparator CSS */
+
+.separator-control {
+    border: none !important;
+    background: #fff;
+    padding:10px;
+    border-left: solid 5px #2271b1 !important;
+    margin: 0;
+}
+.separator-control span {
+    color: #2271b1;
+    margin: 0;
+}
+.separator-control hr{
+    display: none;
+}
+
+img.sports-accessories-selector-img.sports-accessories-selected-img {
+    border: 2px solid #2271b1;
+    cursor: pointer;
+    width: 90px;
+    height: auto;
+    transition: border-color 0.4s ease-in-out;
+}
+li#accordion-section-upsell_section.cannot-expand .accordion-section-title:after,li#accordion-section-doc_section.cannot-expand .accordion-section-title:after{
+    display: none;
+}
+.accordion-section-title button.accordion-trigger{
+    width: 92%;
+}
+#customize-controls .control-section .accordion-section-title button:focus{
+    box-shadow: none;
+}
+.customizer-upgraded-features {
+    background-color: #071433;
+    padding: 10px;
+    color: #ffffff;
+    border-radius: 4px;
+}
+.customizer-pro-icon {
+    font-size: 18px;
+    color: #ffffff;
+    margin-right: 10px;
+}
+.customizer-upgraded-features .pro-text {
+    font-size: 15px;
+    line-height: 20px;
+}
+.customizer-upgraded-features a {
+    color: #24BDAF !important; 
+    font-weight: 700;
+    text-decoration: none;
+}
+.customizer-upgraded-features a:hover {
+    text-decoration: underline;
+}
+/* Reset Settings */
+#customize-control-sports_accessories_reset_demo_import_settings, #customize-control-sports_accessories_reset_color {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
+  align-items: center;
+  gap: 10px; 
+}
+#customize-control-sports_accessories_reset_demo_import_settings label, #customize-control-sports_accessories_reset_color label {
+  font-size: 16px;
+  color: #0073aa;
+  display: block;
+  line-height: 1.75;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+#customize-control-sports_accessories_reset_demo_import_settings input, #customize-control-sports_accessories_reset_color input{
+  margin: 0px;
+  padding: 5px;
+  height: 15px;
+}
+
+li#accordion-section-upsell_section h3, li#accordion-section-doc_section h3 {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+li#accordion-section-upsell_section h3 a.button.button-secondary.alignright,
+li#accordion-section-doc_section h3 a.button.button-secondary.alignright {
+    background: #fff !important;
+    color: #000 !important;
+    border: none !important;
+    padding: 0 10px;
+    min-height: 29px !important;
+    line-height: 30px !important;
+}

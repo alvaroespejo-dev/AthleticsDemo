@@ -1,0 +1,18 @@
+{
+  "eventForm": {
+    "brandHelp": "La marca decide en qué landing sale el evento.",
+    "nameHelp": "La dirección pública se deriva del nombre si no se indica otra cosa.",
+    "sizeChangeHelp": "Hasta cuándo el atleta puede cambiar su talla solo. La producción de poleras necesita el corte antes del cierre de inscripciones.",
+    "reservationHelp": "Cuánto se le guarda el lugar a quien todavía no pagó, antes de liberarlo.",
+    "toleranceHelp": "Diferencia en menos que se da por buena. En 0 se exige el monto exacto.",
+    "liabilityHelp": "El atleta lo acepta al inscribirse y se guarda con fecha e IP. Sin este texto el evento no se puede publicar.",
+    "published": "El evento quedó publicado y ya acepta inscripciones.",
+    "status": {
+      "Draft": "Borrador",
+      "Published": "Publicado",
+      "Closed": "Cerrado",
+      "Finished": "Finalizado",
+      "Cancelled": "Cancelado"
+    }
+  }
+}

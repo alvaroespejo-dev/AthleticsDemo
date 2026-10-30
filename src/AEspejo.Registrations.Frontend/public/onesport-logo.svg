@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Logo provisional de One.Sport Bolivia.
+
+  No se pudo tomar el de la página de Facebook (bloquea el acceso automatizado), así que es un
+  wordmark tipográfico construido acá: el "1" dentro del hexágono hace de isotipo. Reemplazar
+  este archivo por el logo real no exige tocar código: el HTML lo referencia por ruta.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 56" width="260" height="56" role="img" aria-label="One.Sport Bolivia">
+  <title>One.Sport Bolivia</title>
+
+  <!-- Isotipo: hexágono con el numeral 1. -->
+  <g>
+    <path d="M28 2 L50 15 L50 41 L28 54 L6 41 L6 15 Z" fill="#ff6a2b"/>
+    <path d="M28 8 L45 18 L45 38 L28 48 L11 38 L11 18 Z" fill="#141821"/>
+    <path d="M24.5 20.5 L31 17 L31 40 L26.6 40 L26.6 22.6 L24.5 23.6 Z" fill="#ffffff"/>
+  </g>
+
+  <!-- Wordmark. -->
+  <text x="64" y="38"
+        font-family="Outfit, 'DM Sans', 'Segoe UI', system-ui, sans-serif"
+        font-size="27" font-weight="800" letter-spacing="-0.6"
+        fill="currentColor">ONE<tspan fill="#ff6a2b">.</tspan>SPORT</text>
+
+  <text x="66" y="50"
+        font-family="'DM Sans', 'Segoe UI', system-ui, sans-serif"
+        font-size="9" font-weight="600" letter-spacing="5.4"
+        fill="currentColor" opacity="0.65">BOLIVIA</text>
+</svg>

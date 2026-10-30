@@ -1,0 +1,26 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "api",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "D:\\AEspejo\\AEspejo.InscripcionesJ\\src\\AEspejo.Registrations.Backend\\mvnw.cmd", "spring-boot:run"],
+      "cwd": "D:/AEspejo/AEspejo.InscripcionesJ/src/AEspejo.Registrations.Backend",
+      "env": { "JAVA_HOME": "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.12.101-hotspot" },
+      "port": 5183
+    },
+    {
+      "name": "web",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "src/AEspejo.Registrations.Frontend", "run", "dev", "--", "-p", "5173"],
+      "env": { "DEV_API_ORIGIN": "http://localhost:5183" },
+      "port": 5173
+    },
+    {
+      "name": "athleticsdemo",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "src/AEspejo.Landing.AthleticsDemo", "run", "dev"],
+      "port": 5175
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Carreras urbanas de 5K, 10K y 21K con cronometraje por chip, circuito cerrado y atención en ruta." />
+    <title>Carreras urbanas | Demo</title>
+    <link rel="icon" href="/ae-favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./landing/styles.css" />
+    <link rel="stylesheet" href="./landing/motion.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#inicio"><img class="brand-logo" src="/athleticsdemo-logo.jpg" alt="" /><span data-i18n="brand">Carreras urbanas</span></a>
+      <nav class="main-nav" id="menu">
+        <a href="#distancias" data-i18n="navDistances">Distancias</a>
+        <a href="#como-funciona" data-i18n="navHow">Cómo funciona</a>
+        <a href="#calendario" data-i18n="navCalendar">Calendario</a>
+        <a href="#empresas" data-i18n="navCompanies">Empresas</a>
+        <a id="enlace-money-sport" href="#" target="_blank" rel="noopener noreferrer" data-i18n="navMoneySport">Athlete Portal</a>
+        <a class="nav-login" id="enlace-admin" href="#" target="_blank" rel="noopener noreferrer"><span data-i18n="adminAccess">Acceso admin</span> <span>↗</span></a>
+      </nav>
+      <div class="header-tools">
+        <select id="idioma" class="lang-select" aria-label="Idioma">
+          <option value="es">ES</option>
+          <option value="en">EN</option>
+        </select>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <img class="hero-photo" src="https://images.unsplash.com/photo-1519703936-c4a3b3eb88e4?w=2000&q=80&auto=format&fit=crop" alt="" fetchpriority="high" />
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow reveal-up" data-i18n="heroEyebrow">Carreras en la ciudad</p>
+          <h1 class="reveal-up" data-i18n="heroTitle">Corre por <em>tu</em> ciudad</h1>
+          <p class="hero-copy reveal-up" data-i18n="heroCopy">Circuitos cerrados, cronometraje por chip y hidratación en ruta, para tu primera carrera de 5K o tu primer 21K.</p>
+          <div class="hero-actions reveal-up">
+            <a class="button button-primary" href="#calendario"><span data-i18n="heroCta">Ver próximas carreras</span></a>
+            <a class="button button-outline" href="#distancias"><span data-i18n="heroSecondary">Elegir distancia</span></a>
+          </div>
+        </div>
+        <a class="scroll-cue" href="#distancias" aria-label="Bajar">
+          <span class="scroll-line"></span>
+        </a>
+      </section>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>5K</span><i>▲</i><span>10K</span><i>▲</i><span>21K</span><i>▲</i><span data-i18n="marqueeChip">Cronometraje por chip</span><i>▲</i><span data-i18n="marqueeCircuit">Circuito cerrado</span><i>▲</i>
+          <span>5K</span><i>▲</i><span>10K</span><i>▲</i><span>21K</span><i>▲</i><span data-i18n="marqueeChip">Cronometraje por chip</span><i>▲</i><span data-i18n="marqueeCircuit">Circuito cerrado</span><i>▲</i>
+        </div>
+      </div>
+
+      <section class="section" id="distancias">
+        <div class="section-heading reveal-up">
+          <h2 data-i18n="distancesTitle">Elige tu distancia</h2>
+          <p data-i18n="distancesCopy">Tres recorridos por circuito cerrado. Empieza por el que te haga sentir desafiado, no por el que te asusta.</p>
+        </div>
+        <div class="distance-grid">
+          <article class="distance-card reveal-up">
+            <span class="distance-number">01</span>
+            <h3>5K</h3>
+            <p data-i18n="distance5">Tu primera carrera. Plana, corta y con ambiente de familia.</p>
+          </article>
+          <article class="distance-card reveal-up">
+            <span class="distance-number">02</span>
+            <h3>10K</h3>
+            <p data-i18n="distance10">Para quien ya entrena con regularidad y quiere medir su ritmo.</p>
+          </article>
+          <article class="distance-card distance-card-accent reveal-up">
+            <span class="distance-number">03</span>
+            <h3>21K</h3>
+            <p data-i18n="distance21">Media maratón urbana, con avituallamiento cada cinco kilómetros.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="photo-band" aria-hidden="true">
+        <img class="photo-band-img" src="https://images.unsplash.com/photo-1509941654768-e0a6884be9b2?w=2000&q=80&auto=format&fit=crop" alt="" loading="lazy" />
+        <div class="photo-band-caption reveal-up">
+          <p data-i18n="bandCaption">Corre entre edificios, no entre filas.</p>
+        </div>
+      </section>
+
+      <section class="section section-dark" id="como-funciona">
+        <div class="section-heading reveal-up">
+          <h2 data-i18n="howTitle">Cómo funciona</h2>
+        </div>
+        <ol class="steps">
+          <li class="reveal-up"><span>1</span><h3 data-i18n="step1Title">Inscríbete en línea</h3><p data-i18n="step1Copy">Elige la carrera, la categoría y la talla de tu kit desde el calendario.</p></li>
+          <li class="reveal-up"><span>2</span><h3 data-i18n="step2Title">Retira tu kit</h3><p data-i18n="step2Copy">Entrega de kits con puntos de atención separados, sin filas largas.</p></li>
+          <li class="reveal-up"><span>3</span><h3 data-i18n="step3Title">Corre con chip</h3><p data-i18n="step3Copy">Tu tiempo se registra desde el primer segundo y se publica al terminar.</p></li>
+        </ol>
+      </section>
+
+      <section class="section" id="calendario">
+        <div class="section-heading section-heading-row reveal-up">
+          <h2 data-i18n="calendarTitle">Calendario</h2>
+          <div class="filters">
+            <button class="filter active" data-filter="upcoming"><span data-i18n="filterUpcoming">Próximas</span> <span class="count" id="conteo-proximos">0</span></button>
+            <button class="filter" data-filter="past"><span data-i18n="filterPast">Pasadas</span> <span class="count" id="conteo-pasados">0</span></button>
+          </div>
+        </div>
+        <div class="event-list" id="lista-eventos">
+          <p class="event-status" data-i18n="loadingEvents">Cargando carreras…</p>
+        </div>
+      </section>
+
+      <section class="section section-companies" id="empresas">
+        <div class="companies-grid">
+          <div class="reveal-up">
+            <h2 data-i18n="companiesTitle">¿Organizas una carrera para tu empresa o club?</h2>
+          </div>
+          <div class="reveal-up">
+            <p class="lead" data-i18n="companiesCopy">Nos encargamos de la producción completa: permisos, circuito, cronometraje, inscripciones en línea y premiación.</p>
+            <a class="button button-dark" href="mailto:info@example.com"><span data-i18n="companiesCta">Escríbenos</span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-bottom">
+        <span data-i18n="footerNote">Sitio de demostración</span>
+        <span data-i18n="footerPhotos">Fotos: Ben Stern y Spencer Imbrock, vía Unsplash</span>
+        <span>© 2026</span>
+      </div>
+    </footer>
+
+    <script type="module" src="./landing/main.js"></script>
+  </body>
+</html>

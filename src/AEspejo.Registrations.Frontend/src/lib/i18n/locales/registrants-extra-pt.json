@@ -1,0 +1,17 @@
+{
+  "registrants": {
+    "description": "Lista e status de pagamento dos participantes.",
+    "collect": "Cobrar",
+    "collectRevert": "Cobrar / Reverter",
+    "roleCollect": "Seu perfil não permite registrar pagamentos",
+    "notCollectable": "Inscrição {{estado}}: não aceita pagamentos",
+    "roleBib": "Seu perfil não permite atribuir números",
+    "noBib": "Não leva número no status {{estado}}",
+    "roleReactivate": "Apenas administradores podem reativar",
+    "onlyExpiredOrCanceled": "Apenas inscrições expiradas ou canceladas podem ser reativadas",
+    "roleCancel": "Apenas administradores podem cancelar",
+    "revertPaymentFirst": "Tem pagamentos creditados: reverta-os primeiro",
+    "cantCancel": "Não pode cancelar inscrição {{estado}}",
+    "batchHelp": "O resultado será aplicado a {{count}} inscrições selecionadas."
+  }
+}

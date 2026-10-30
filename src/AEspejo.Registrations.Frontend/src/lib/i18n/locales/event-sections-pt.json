@@ -1,0 +1,27 @@
+{
+    "eventSections":  {
+                          "ageCategories":  {
+                                                "emptyMessage":  "Sem categorias, todos os inscritos ficam sem classificação e o relatório de premiação não serve.",
+                                                "namePlaceholder":  "Master A",
+                                                "maxAge":  "Idade máxima",
+                                                "scope":  "Alcance",
+                                                "scopeHelp":  "Duas categorias do mesmo sexo e alcance não podem cobrir a mesma idade: o atleta cairia nas duas e a premiação ficaria ambígua.",
+                                                "allModalities":  "Todas as modalidades",
+                                                "onlyModality":  "Somente {{name}}",
+                                                "sex":  "Sexo",
+                                                "newCategory":  "Nova categoria",
+                                                "recalculated":  "Categorias recalculadas: {{count}} inscrições atualizadas.",
+                                                "deleteRow":  "Excluir {{name}}"
+                                            },
+                          "image":  {
+                                        "alt":  "Imagem de {{name}}",
+                                        "delete":  "Excluir imagem"
+                                    },
+                          "manual":  {
+                                         "delete":  "Excluir guia do corredor"
+                                     },
+                          "notice":  {
+                                         "published":  "O evento foi publicado e já aceita inscrições."
+                                     }
+                      }
+}

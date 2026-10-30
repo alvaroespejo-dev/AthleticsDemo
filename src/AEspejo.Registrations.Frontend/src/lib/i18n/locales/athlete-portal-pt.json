@@ -1,0 +1,12 @@
+{
+  "athletePortal": {
+    "and": "e",
+    "saveChanges": "Salvar alterações",
+    "edit": "Editar",
+    "notRegistered": "Não registrado",
+    "noEvents": "Você ainda não participou de nenhum evento.",
+    "marketingLabel": "Quero receber informações sobre próximos eventos pelo WhatsApp.",
+    "marketingHelp": "Opcional. Você pode cancelar quando quiser.",
+    "found": "Registros encontrados"
+  }
+}

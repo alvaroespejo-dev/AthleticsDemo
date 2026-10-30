@@ -1,0 +1,28 @@
+{
+  "audiencePage": {
+    "fields": {
+      "City": "City",
+      "Club": "Club",
+      "Nationality": "Nationality",
+      "Sex": "Sex",
+      "Age": "Age",
+      "Participated": "Participated",
+      "LastRaceYear": "Last race (year)",
+      "EventsParticipated": "Events participated",
+      "HasEmail": "Has e-mail"
+    },
+    "contains": "contains",
+    "race": "Race",
+    "segment": "Segment",
+    "sharedNotice": "{{whatsapp}} messages will be sent: {{shared}} {{sharedLabel}} {{note}}",
+    "raceLabel": "Race",
+    "segmentLabel": "Segment",
+    "emptyTitle": "The audience is empty",
+    "emptyMessage": "Nobody matches the criteria, or those who do have not given marketing consent.",
+    "sendTo": "Send to {{name}}",
+    "segmentCriteriaNote": "The criteria are saved, not the list of people: the next time it is used it will also reach those who registered since today.",
+    "segmentNamePlaceholder": "Women from Santa Cruz who ran in 2025",
+    "descriptionOptional": "Description (optional)",
+    "nameLabel": "Name"
+  }
+}

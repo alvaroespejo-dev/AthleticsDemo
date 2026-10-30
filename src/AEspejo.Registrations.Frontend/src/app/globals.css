@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Same design tokens as the previous panel, so the admin keeps its look. Light theme only: no
+   .dark block and no prefers-color-scheme query, so the panel looks the same on every machine. */
+@layer base {
+  :root {
+    --background: 45 25% 93%;
+    --foreground: 143 18% 12%;
+    --card: 45 25% 97%;
+    --card-foreground: 143 18% 12%;
+    --primary: 143 28% 17%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 105 13% 42%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 45 18% 88%;
+    --muted-foreground: 143 10% 35%;
+    --accent: 68 76% 68%;
+    --accent-foreground: 143 28% 17%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 143 18% 80%;
+    --input: 143 18% 80%;
+    --ring: 143 28% 17%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    margin: 0;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  /* Native controls (date pickers, selects) follow the light scheme. */
+  :root {
+    color-scheme: light;
+  }
+}
