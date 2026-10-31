@@ -1,6 +1,6 @@
 # Implementation Plan: Engineering Quality Baseline
 
-**Branch**: `005-quality-baseline` | **Spec**: [spec.md](spec.md) | **Port**: [007](../007-java-backend-port/plan.md)
+**Branch**: `005-quality-baseline` | **Spec**: [spec.md](spec.md)
 
 ## Summary
 
@@ -10,13 +10,13 @@ that runs both backends' checks. No product code changes.
 
 ## Reference and target
 
-| Concern | C# reference (`AEspejo.InscripcionesBackupCSharp`) | Java target |
-|---|---|---|
-| Style rules | `.editorconfig` absent; `Directory.Build.props` absent | `.editorconfig` at repository root; formatter plugin in `pom.xml` (to choose) |
-| Build checks | `dotnet format --verify-no-changes` (not in CI) | `./mvnw verify` runs format check and tests |
-| Coverage | coverlet (not published) | JaCoCo report in `target/site/jacoco`, published as CI artifact |
-| Frontend tests | none | Vitest and React Testing Library in the panel (`src/AEspejo.Inscripciones.Web`) |
-| Lint | `oxlint` (not in CI) | same, `npm run lint` |
+| Concern | Backend target |
+| --- | --- |
+| Style rules | `.editorconfig` at repository root; formatter plugin in `pom.xml` (to choose) |
+| Build checks | `./mvnw verify` runs format check and tests |
+| Coverage | JaCoCo report in `target/site/jacoco`, published as CI artifact |
+| Frontend tests | Vitest and React Testing Library in the panel (`src/AEspejo.Registrations.Frontend`) |
+| Lint | same, `npm run lint` |
 
 ## Technical Context
 
@@ -43,11 +43,11 @@ that runs both backends' checks. No product code changes.
 specs/005-quality-baseline/{spec.md, plan.md, tasks.md}
 
 .editorconfig                                             (root, Java, TypeScript, Markdown)
-src/AEspejo.Inscripciones.Backend/pom.xml                 (formatter and JaCoCo plugins)
-src/AEspejo.Inscripciones.Web/package.json                (test script, devDependencies)
-src/AEspejo.Inscripciones.Web/vite.config.ts              (test block) or vitest.config.ts
-src/AEspejo.Inscripciones.Web/src/api/endpoints.test.ts   (adapter tests, see spec 007)
-src/AEspejo.Inscripciones.Web/src/auth/RutaProtegida.test.tsx
+src/AEspejo.Registrations.Backend/pom.xml                 (formatter and JaCoCo plugins)
+src/AEspejo.Registrations.Frontend/package.json                (test script, devDependencies)
+src/AEspejo.Registrations.Frontend/vite.config.ts              (test block) or vitest.config.ts
+src/AEspejo.Registrations.Frontend/src/api/endpoints.test.ts   (route and enum mapping tests)
+src/AEspejo.Registrations.Frontend/src/auth/RutaProtegida.test.tsx
 .github/workflows/pr-checks.yml
 ```
 
@@ -61,4 +61,4 @@ None (no API changes).
 
 - The first formatter run touches many Java files; do it in one isolated commit.
 - Vite and React 19 compatibility with jsdom: verify versions before adopting.
-- The panel tests must also cover the Java adapter (spec 007 section 4), otherwise route changes go unnoticed.
+- The panel tests must cover the API route and enum mapping, otherwise route changes go unnoticed.

@@ -4,111 +4,110 @@
 
 **Created**: 2026-10-06
 
-**Status**: Deferred. Not in the C# reference and not part of the interview demo (see `specs/007-java-backend-port/spec.md`, Scope).
+**Status**: Deferred. Not implemented, and not part of the interview demo (see `specs/007-backend-api/spec.md`, Scope).
 
 **Input**: README phase 9 "Historical import" (status: Pending).
 
-## Current State (audit)
+## Current State
 
-- **C# reference (`AEspejo.InscripcionesBackupCSharp/src`)**:
-  - Entities only: `LoteImportacionAtletas`, `FilaImportacionAtleta`, `EquivalenciaModalidad`, with
-    EF configuration in `ImportacionConfigurations.cs`. Enums `ResultadoFilaImportacion` and
-    `OrigenOptIn.Importado`.
-  - Helpers that exist and are reused by the import: `Normalizador`, `SimilitudNombres`,
-    `ValidadorDocumento` (`Application/Common`), `CalculadoraCategoria`, `ServicioBusquedaAtleta`.
-  - Not in C#: the file reader, the row classifier, the import service, the review queue and undo.
-    *Design required.*
-- **Java target**: `AthleteImportBatch`, `AthleteImportRow`, `ModalityEquivalence` entities exist;
-  `DataNormalizer` and `AgeCategoryResolver` exist. `SimilitudNombres` and `ValidadorDocumento` must be
-  ported first (spec 007 tasks T003 and the document validator). No import code exists.
+- **Schema only**: `AthleteImportBatch`, `AthleteImportRow` and `ModalityEquivalence`, with their JPA mapping, the
+  enum `ImportRowResult` and the value `OptInSource.Imported`.
+- **Helpers that exist and are reused by the import**: `DataNormalizer`, `NameSimilarity`, `DocumentValidator`,
+  `AgeCategoryResolver` and `AthleteSearchService`.
+- **Not implemented yet**: the file reader, the row classifier, the import service, the review queue and undo.
+  *Design required.*
+- No import code exists.
 
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Upload and preview with column mapping (Priority: P1)
 
-An administrator uploads an Excel or CSV file from the previous system, maps its columns to athlete
-fields and sees a preview with the outcome predicted for each row before anything is saved.
+An administrator uploads an Excel or CSV file from the previous system, maps its columns to athlete fields, and sees
+a preview with the outcome predicted for each row before anything is saved.
 
-**Why this priority**: Prevents bad data from entering the shared athlete base.
+**Why this priority**: It prevents bad data from entering the shared athlete base.
 
-**Independent Test**: Upload a sample file; verify the preview classifies rows without writing athletes.
+**Independent Test**: Upload a sample file and verify that the preview classifies rows without writing athletes.
 
 **Acceptance Scenarios**:
 
-1. **Given** a valid file, **When** the administrator maps columns, **Then** a preview lists each row
-   with its predicted result and reason.
-2. **Given** an unreadable or oversized file, **When** uploading, **Then** a clear error is shown.
+1. **Given** a valid file, **When** the administrator maps the columns, **Then** the preview lists each row with its
+   predicted result and reason.
+2. **Given** an unreadable or oversized file, **When** it is uploaded, **Then** a clear error is shown.
 
 ---
 
 ### User Story 2 - Process the batch (Priority: P1)
 
-The administrator confirms the import; rows are accepted, corrected, flagged for review, marked as
-duplicates or rejected. No row is dropped silently.
+The administrator confirms the import. Each row is accepted, corrected, flagged for review, marked as a duplicate or
+rejected. No row is dropped silently.
 
-**Independent Test**: Import a file covering all five outcomes; verify counters on the batch and the
-original row preserved in `FilaImportacionAtleta`.
+**Independent Test**: Import a file that covers all five outcomes; verify the counters on the batch and that the
+original row is preserved in `AthleteImportRow`.
 
 **Acceptance Scenarios**:
 
-1. **Given** a clean row, **When** processing, **Then** the athlete (and registration when an event is
-   chosen) is created with `OrigenOptIn.Importado` and no consent assumed.
-2. **Given** a row matching an existing athlete by document, **When** processing, **Then** it is
-   `Duplicada` and linked to the existing athlete.
-3. **Given** dirty modality text such as `L 30K`, **When** an equivalence exists, **Then** modality,
-   category and kit are resolved; otherwise the row goes to `EnRevision`.
+1. **Given** a clean row, **When** it is processed, **Then** the athlete (and a registration, when an event is
+   chosen) is created with `OptInSource.Imported`, and no consent is assumed.
+2. **Given** a row that matches an existing athlete by document, **When** it is processed, **Then** it is marked
+   `Duplicate` and linked to the existing athlete.
+3. **Given** modality text such as `L 30K`, **When** an equivalence exists, **Then** the modality, category and kit
+   are resolved; otherwise the row goes to `InReview`.
 
 ---
 
 ### User Story 3 - Review queue and manual merge (Priority: P2)
 
-The administrator resolves in-review rows, edits equivalences, and merges duplicates manually.
+The administrator resolves the rows in review, edits the equivalences, and merges duplicates manually.
 
-**Independent Test**: Resolve one row and one duplicate; verify athlete counts and audit entries.
+**Independent Test**: Resolve one row and one duplicate; verify the athlete counts and the audit entries.
 
 **Acceptance Scenarios**:
 
-1. **Given** an in-review row, **When** the administrator creates an equivalence and reprocesses,
-   **Then** the row becomes accepted/corrected without re-uploading the file.
+1. **Given** a row in review, **When** the administrator creates an equivalence and reprocesses, **Then** the row
+   becomes accepted or corrected, without uploading the file again.
 
 ---
 
 ### User Story 4 - Undo a batch (Priority: P3)
 
-An administrator undoes a batch, removing what it created (athletes and registrations) when safe.
+An administrator undoes a batch, removing what it created (athletes and registrations) when that is safe.
 
-**Independent Test**: Import then undo; verify created records are gone and pre-existing athletes untouched.
+**Independent Test**: Import, then undo; verify that the created records are gone and the existing athletes are
+untouched.
 
 **Acceptance Scenarios**:
 
-1. **Given** a batch, **When** undone, **Then** only records created by that batch are removed.
+1. **Given** a batch, **When** it is undone, **Then** only the records created by that batch are removed.
 
 ### Edge Cases
 
-- Same person with different spellings or missing document (use `SimilitudNombres`, never auto-merge below threshold).
-- Invalid or foreign documents (`TipoDocumento`, `ValidadorDocumento`).
+- The same person written with different spellings, or with no document number. Use `NameSimilarity`, and never merge
+  automatically below the threshold.
+- Invalid or foreign documents (`DocumentType`, `DocumentValidator`).
 - Dates of birth in several formats.
-- Re-uploading the same file.
-- Athletes who already have a portal account (`CuentaAtleta`): never overwrite their data.
+- The same file uploaded again.
+- Athletes who already have a portal account (`AthleteAccount`): their data is never overwritten.
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
-- **FR-001**: System MUST accept `.xlsx` and `.csv` and validate by content, not extension.
-- **FR-002**: System MUST provide a preview step with column mapping stored in `MapeoJson`.
-- **FR-003**: System MUST classify every row with a `ResultadoFilaImportacion` and keep the raw row.
-- **FR-004**: System MUST NOT register marketing consent for imported athletes (`OrigenOptIn.Importado` = no consent recorded).
-- **FR-005**: System MUST let administrators manage modality equivalences per event.
-- **FR-006**: System MUST support manual duplicate resolution and batch undo, all audited.
-- **FR-007**: Endpoints MUST require the `administracion` policy.
-- **FR-008**: Duplicate-detection thresholds and merge precedence [NEEDS CLARIFICATION: which fields win on merge?].
-- **FR-009**: Source file layout of the previous system [NEEDS CLARIFICATION: provide sample files].
+- **FR-001**: The system MUST accept `.xlsx` and `.csv` files and validate them by content, not by extension.
+- **FR-002**: The system MUST provide a preview step with the column mapping stored in `MappingJson`.
+- **FR-003**: The system MUST classify every row with an `ImportRowResult` and keep the raw row.
+- **FR-004**: The system MUST NOT register marketing consent for imported athletes. `OptInSource.Imported` means
+  that no consent is recorded.
+- **FR-005**: Administrators MUST be able to manage the modality equivalences per event.
+- **FR-006**: The system MUST support manual duplicate resolution and batch undo, and all of them are audited.
+- **FR-007**: The endpoints MUST require the administrator policy.
+- **FR-008**: Duplicate-detection thresholds and merge precedence. [NEEDS CLARIFICATION: which fields win on merge?]
+- **FR-009**: Source file layout of the previous system. [NEEDS CLARIFICATION: provide sample files.]
 
 ### Key Entities
 
-- **LoteImportacionAtletas**, **FilaImportacionAtleta**, **EquivalenciaModalidad** (existing).
-- **Atleta**, **Inscripcion** (created or linked).
+- **AthleteImportBatch**, **AthleteImportRow**, **ModalityEquivalence**: existing entities.
+- **Athlete**, **Registration**: created or linked by the import.
 
 ## Success Criteria *(mandatory)*
 
@@ -117,9 +116,9 @@ An administrator undoes a batch, removing what it created (athletes and registra
 - **SC-001**: A 5,000-row historical file is imported and classified in under 2 minutes.
 - **SC-002**: 100% of rows end with an explicit result; none is dropped.
 - **SC-003**: Zero athletes receive marketing messages because of imported data without recorded consent.
-- **SC-004**: Re-uploading the same file creates no duplicate athletes.
+- **SC-004**: Uploading the same file again creates no duplicate athletes.
 
 ## Assumptions
 
 - Only administrators run imports.
-- The import is run a limited number of times (migration), so a synchronous implementation is acceptable.
+- The import runs only a few times, so a synchronous implementation is acceptable.

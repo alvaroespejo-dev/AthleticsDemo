@@ -11,7 +11,7 @@ public interface CampaignRepository extends JpaRepository<Campaign, Integer> {
 
     Page<Campaign> findAllByOrderByCreatedAtDesc(Pageable pageable);
 
-    /** Campaigns of one brand, for deployments fixed to a brand (the C# {@code CodigoFijo}). */
+    /** Campaigns of one brand, for deployments fixed to a brand . */
     Page<Campaign> findByBrandCodeOrderByCreatedAtDesc(String brandCode, Pageable pageable);
 
     List<Campaign> findByStatusOrderByCreatedAtAsc(CampaignStatus status);

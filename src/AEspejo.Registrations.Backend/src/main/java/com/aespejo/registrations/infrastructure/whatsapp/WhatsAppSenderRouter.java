@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 /**
- * Picks the channel for each message from the brand that sends it, ported from {@code EnrutadorProveedorMensajeria}.
+ * Picks the channel for each message from the brand that sends it.
  * With one number per brand the provider is no longer a single global decision: one brand can already send for real
  * while the other is still simulated.
  */

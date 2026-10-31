@@ -5,7 +5,7 @@ import java.util.Optional;
 
 /**
  * Format detection by file signature, never by the declared content type or extension (both are chosen by the uploader).
- * Ported from {@code ValidadorImagen}, {@code ValidadorDocumento} and {@code ValidadorComprobante} in the C# reference.
+ *, {@code ValidadorDocumento} and {@code ValidadorComprobante}.
  */
 public final class Uploads {
 

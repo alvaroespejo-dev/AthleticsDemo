@@ -9,8 +9,7 @@ Specs, plans and tasks are written in **English**, like all project artifacts. N
 tables, columns, endpoints and files in a spec are English too. The only exception is text shown to end
 users in the frontend UI, which may be Spanish or any other language through i18n.
 
-Terms from the original Spanish domain are translated: `Atleta` becomes `Athlete`, `Inscripcion`
-becomes `Registration`, `Evento` becomes `Event`, and `Pago` becomes `Payment`.
+Domain terms are English: `Athlete`, `Registration`, `Event`, `Payment`.
 
 Full rule and exceptions: [`CLAUDE.md`](../CLAUDE.md) and `.specify/memory/constitution.md`
 (Principle I).

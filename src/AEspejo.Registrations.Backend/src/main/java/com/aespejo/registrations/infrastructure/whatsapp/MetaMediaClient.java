@@ -15,7 +15,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestClientResponseException;
 
 /**
- * Downloads media from the Cloud API in two steps, ported from {@code MediaWhatsAppMeta}. First the media id gives a
+ * Downloads media from the Cloud API in two steps. First the media id gives a
  * short-lived signed URL, then that URL is fetched with the same Bearer token. The URL looks public but is not, and that
  * is where this usually fails.
  */

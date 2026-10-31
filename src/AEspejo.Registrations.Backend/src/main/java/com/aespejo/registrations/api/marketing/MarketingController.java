@@ -37,7 +37,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Audience, saved segments and WhatsApp campaigns. Marketing is for administrators only, as in the C# reference: a
+ * Audience, saved segments and WhatsApp campaigns. Marketing is for administrators only, as: a
  * campaign goes out in the name of the organization and uses the messaging quota of the Meta account.
  */
 @RestController

@@ -4,21 +4,20 @@
 
 **Created**: 2026-10-06
 
-**Status**: Deferred. Not in the C# reference and not part of the interview demo (see `specs/007-java-backend-port/spec.md`, Scope).
+**Status**: Deferred. Not implemented, and not part of the interview demo (see `specs/007-backend-api/spec.md`, Scope).
 
 **Input**: "TBD" items of the constitution (testing, style, CI, observability).
 
-## Current State (audit)
+## Current State
 
-- **C# reference**: `.editorconfig` absent; no `Directory.Build.props`; no frontend test framework
-  (the panel has `oxlint` only); CI runs `dotnet test` only; no coverage threshold.
-- **Java target**: the Maven build (`pom.xml`) has JUnit through `spring-boot-starter-test` and no
-  formatter, coverage report or lint step. No CI workflow for Java exists in `.github/workflows`.
-- The panel is the same project in both cases, so its frontend test setup applies to both backends.
+- No `.editorconfig` exists. The panel has `oxlint` only and no test framework. CI runs `./mvnw verify` only, and
+  there is no coverage threshold.
+- The Maven build (`pom.xml`) has JUnit through `spring-boot-starter-test`, and no formatter, coverage report or
+  lint step. No CI workflow for the backend exists in `.github/workflows`.
 
 ## User Scenarios & Testing *(mandatory)*
 
-### User Story 1 - Consistent C# style enforced by the build (Priority: P1)
+### User Story 1 - Consistent style enforced by the build (Priority: P1)
 
 A developer gets the same formatting and analyzer warnings locally and in CI.
 
@@ -26,7 +25,7 @@ A developer gets the same formatting and analyzer warnings locally and in CI.
 
 **Acceptance Scenarios**:
 
-1. **Given** an `.editorconfig`, **When** `dotnet format --verify-no-changes` runs, **Then** a violation fails the check.
+1. **Given** an `.editorconfig`, **When** `the Java format check` runs, **Then** a violation fails the check.
 
 ---
 
@@ -61,14 +60,14 @@ Coverage is collected (coverlet and Vitest) and published as a CI artifact, with
 ### Edge Cases
 
 - Existing code violating new style rules: apply the format once in a dedicated commit.
-- Spanish identifiers/comments in existing code must not fail the build.
+- Spanish user-visible text in existing code must not fail the build.
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
-- **FR-001**: Repository MUST contain an `.editorconfig` for C#, TS and Markdown.
-- **FR-002**: CI MUST run `dotnet format --verify-no-changes`, build and tests.
+- **FR-001**: Repository MUST contain an `.editorconfig` for Java, TypeScript and Markdown.
+- **FR-002**: CI MUST run the Java format check, build and tests.
 - **FR-003**: Frontend MUST have Vitest + React Testing Library with a `test` script.
 - **FR-004**: CI MUST run `npm run lint`, `tsc -b` and `npm test` on pull requests.
 - **FR-005**: Coverage reports MUST be generated; threshold [NEEDS CLARIFICATION: start gate-less, then 70% on Domain/Application?].

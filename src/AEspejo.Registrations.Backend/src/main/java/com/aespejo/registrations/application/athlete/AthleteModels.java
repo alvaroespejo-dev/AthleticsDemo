@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-/** Contracts of the athlete register (padron), ported from {@code DtosAtleta.cs}. */
+/** Contracts of the athlete register (padron). */
 public final class AthleteModels {
 
     private AthleteModels() {

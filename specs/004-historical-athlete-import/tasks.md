@@ -1,27 +1,27 @@
 # Tasks: Historical Athlete Import
 
-**Input**: [spec.md](spec.md), [plan.md](plan.md). Port rules: [007 spec](../007-java-backend-port/spec.md).
+**Input**: [spec.md](spec.md), [plan.md](plan.md).
 
 ## Phase 1: Clarification
 
 - [ ] T001 Obtain anonymized sample files; resolve FR-008 and FR-009; update spec.md
 - [ ] T002 Decide the undo strategy (batch marker vs. derive from rows) and update plan.md
 
-## Phase 2: Foundational (includes ports from C#)
+## Phase 2: Foundational (includes shared utilities)
 
-- [ ] T003 Port `SimilitudNombres` to `NameSimilarity` (spec 007 T003)
-- [ ] T004 Port `ValidadorDocumento` to `DocumentValidator`, with tests from the C# unit tests
+- [ ] T003 Implement `NameSimilarity` (with tests)
+- [ ] T004 Implement `DocumentValidator`, with unit tests for each document type
 - [ ] T005 [P] `AthleteFileReader` interface and CSV implementation
 - [ ] T006 [P] `ImportFileValidator` (content-based validation)
 - [ ] T007 `ImportRowClassifier` pure rules in `domain/services`
 - [ ] T008 [P] Unit tests for the classifier covering the five outcomes
-- [ ] T009 Migration for undo bookkeeping if required
+- [ ] T009 Schema migration for undo bookkeeping, if required
 
 ## Phase 3: US1 - Preview (P1) MVP
 
 - [ ] T010 [US1] `AthleteImportService.preview` (no writes)
 - [ ] T011 [US1] Preview endpoint and integration tests
-- [ ] T012 [US1] Upload, mapping and preview wizard in `ImportacionAtletas.tsx`; i18n in es, en and pt
+- [ ] T012 [US1] Upload, mapping and preview wizard in the athlete import page; i18n in es, en and pt
 
 ## Phase 4: US2 - Process batch (P1)
 

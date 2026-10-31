@@ -14,8 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Lookup of an existing athlete for the public registration form, so the form can pre-fill the data. Ported from
- * {@code ServicioBusquedaAtleta}. The match is exact on the document number, and athletes who withdrew from marketing
+ * Lookup of an existing athlete for the public registration form, so the form can pre-fill the data. The match is exact on the document number, and athletes who withdrew from marketing
  * or were unsubscribed are not shown.
  */
 @Service
@@ -45,7 +44,7 @@ public class AthleteSearchService {
         String normalized = DataNormalizer.normalizeDocument(documentNumber);
         return athletes.findByDocumentNumber(normalized).stream()
                 .filter(a -> a.getUnsubscribedAt() == null)
-                // Same order as the C# reference: by the document type's numeric value, which follows declaration order.
+                // Ordered by the document type's numeric value, which follows declaration order.
                 .sorted(java.util.Comparator.comparing((Athlete a) -> a.getDocumentType().ordinal()))
                 .map(a -> toFound(a, eventSlug))
                 .toList();

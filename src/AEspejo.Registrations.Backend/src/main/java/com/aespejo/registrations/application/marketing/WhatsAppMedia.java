@@ -3,7 +3,7 @@ package com.aespejo.registrations.application.marketing;
 import java.util.Optional;
 
 /**
- * Downloads media that arrives by WhatsApp, ported from {@code IMediaWhatsApp}. It is a separate port from the webhook
+ * Downloads media that arrives by WhatsApp. It is a separate port from the webhook
  * on purpose: pulling a multi-megabyte file inside the POST that Meta expects to confirm within seconds would make Meta
  * time out and resend the whole batch.
  */

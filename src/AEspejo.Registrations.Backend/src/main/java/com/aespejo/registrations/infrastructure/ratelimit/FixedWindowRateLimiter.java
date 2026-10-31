@@ -7,14 +7,14 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.stereotype.Component;
 
 /**
- * Fixed-window limiter in memory, the equivalent of the {@code AddFixedWindowLimiter} policies of the C# reference.
+ * Fixed-window limiter in memory, with one limit per policy.
  * A key is a policy name, optionally followed by a partition (for example the Auth0 subject). Single instance only:
  * with several API instances each one keeps its own counters.
  */
 @Component
 public class FixedWindowRateLimiter {
 
-    /** Policy shared by the public athlete search and the Money Sport lookup, as in the C# reference. */
+    /** Policy shared by the public athlete search and the Money Sport lookup, as. */
     public static final String ATHLETE_SEARCH = "busqueda-atleta";
 
     private final Map<String, Window> windows = new ConcurrentHashMap<>();

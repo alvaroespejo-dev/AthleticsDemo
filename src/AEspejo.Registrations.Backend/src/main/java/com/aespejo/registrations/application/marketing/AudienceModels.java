@@ -3,7 +3,7 @@ package com.aespejo.registrations.application.marketing;
 import java.util.List;
 
 /**
- * Audience contracts, ported from {@code FiltroAudiencia.cs} and {@code DtosMarketing.cs}. Enums are stored and sent by
+ * Audience contracts and {@code DtosMarketing.cs}. Enums are stored and sent by
  * name, so the panel and the saved JSON use the same English values.
  */
 public final class AudienceModels {

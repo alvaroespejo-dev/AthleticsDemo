@@ -1,7 +1,7 @@
 package com.aespejo.registrations.infrastructure.security;
 
 /**
- * Authorization rules of the API, ported from {@code Politicas} in the C# reference. Use them with
+ * Authorization rules of the API. Use them with
  * {@code @PreAuthorize}. The role comes from the {@code role} claim of the token, mapped to {@code ROLE_<role>}.
  */
 public final class Policies {

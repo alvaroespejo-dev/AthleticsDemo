@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * Turns a Graph API error response into text for a person, ported from {@code ErroresMeta}. Meta puts the detail in
+ * Turns a Graph API error response into text for a person. Meta puts the detail in
  * {@code error.message}, and that is what tells an operator what to fix, so it is preferred over the raw body.
  */
 final class WhatsAppErrors {

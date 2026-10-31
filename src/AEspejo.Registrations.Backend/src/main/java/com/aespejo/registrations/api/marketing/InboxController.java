@@ -33,8 +33,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * The WhatsApp inbox: conversations with customers and the operator's replies. Ported from
- * {@code BandejaWhatsAppController}. It is operational work that any staff member can do, not only an administrator.
+ * The WhatsApp inbox: conversations with customers and the operator's replies. It is operational work that any staff member can do, not only an administrator.
  */
 @RestController
 @RequestMapping("/api/marketing/inbox")
@@ -72,7 +71,7 @@ public class InboxController {
 
     /**
      * Free-text reply. Only works inside the 24-hour window after the customer's last message; outside it the API
-     * answers 422 with the reason, the same as the C# reference.
+     * answers 422 with the reason.
      */
     @PostMapping("/conversations/{id}/reply")
     public MessageView reply(@AuthenticationPrincipal Jwt jwt, @PathVariable int id,

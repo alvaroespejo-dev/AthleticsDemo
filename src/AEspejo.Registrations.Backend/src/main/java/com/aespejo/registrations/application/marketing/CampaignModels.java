@@ -8,7 +8,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.OffsetDateTime;
 
-/** What the campaign screens read and write. Ported from {@code DtosMarketing}, with English field names. */
+/** What the campaign screens read and write., with English field names. */
 public final class CampaignModels {
 
     private CampaignModels() {

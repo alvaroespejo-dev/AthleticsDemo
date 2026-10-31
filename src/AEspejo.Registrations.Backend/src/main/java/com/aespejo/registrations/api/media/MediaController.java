@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import java.util.Map;
 
 /**
- * Uploads and downloads of files. Writes are restricted by role as in the C# reference; the reads that appear on public
+ * Uploads and downloads of files. Writes are restricted by role as; the reads that appear on public
  * pages (cover, kit photo, QR codes, manual) are anonymous. The upload field is named {@code archivo}, as in the panel.
  */
 @RestController

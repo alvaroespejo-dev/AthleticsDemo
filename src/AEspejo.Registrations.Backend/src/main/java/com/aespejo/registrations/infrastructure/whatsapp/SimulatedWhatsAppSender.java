@@ -7,8 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * Logs the send and reports it as delivered, without going to the network. Ported from
- * {@code ProveedorMensajeriaSimulado}. It is not a test double: it is the default channel until Meta approves a brand's
+ * Logs the send and reports it as delivered, without going to the network. It is not a test double: it is the default channel until Meta approves a brand's
  * marketing templates, so audiences, recipients and campaign states can be exercised without a batch of failures.
  */
 @Component

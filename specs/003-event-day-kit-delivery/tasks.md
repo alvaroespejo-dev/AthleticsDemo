@@ -1,11 +1,11 @@
 # Tasks: Event Day Kit Delivery
 
-**Input**: [spec.md](spec.md), [plan.md](plan.md). Port rules: [007 spec](../007-java-backend-port/spec.md).
+**Input**: [spec.md](spec.md), [plan.md](plan.md).
 
 ## Phase 1: Clarification
 
 - [ ] T001 Resolve unpaid override, offline mode and QR camera scanning; update spec.md
-- [ ] T002 Approve the delivery rules in writing (the C# reference has no delivery write path)
+- [ ] T002 Approve the delivery rules in writing (no delivery write path exists yet)
 
 ## Phase 2: Foundational
 
@@ -17,8 +17,8 @@
 - [ ] T005 [US1] `KitDeliveryService.search` and `deliver`
 - [ ] T006 [US1] `KitDeliveryController` search and deliver endpoints (role `KitStaff`)
 - [ ] T007 [US1] Tests: success, double delivery, non-deliverable state, role access
-- [ ] T008 [US1] `EntregaKits.tsx` mobile-first page, route in `App.tsx`, nav entry for `KitStaff`
-- [ ] T009 [P] [US1] Spanish and English strings in the panel i18n files
+- [ ] T008 [US1] Mobile-first delivery page in the panel, its route and a nav entry for `KitStaff`
+- [ ] T009 [P] [US1] Spanish, English and Portuguese strings in the panel i18n files
 
 ## Phase 4: US2 - Live board (P2)
 

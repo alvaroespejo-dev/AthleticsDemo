@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * Resolves each brand's WhatsApp credentials, ported from {@code ResolutorWhatsAppPorMarca}. A brand without its own
+ * Resolves each brand's WhatsApp credentials. A brand without its own
  * section inherits the global block. The account id, phone number id and token are inherited as a group: a brand that
  * declares only part of its account would send from one number with another brand's approved templates.
  */

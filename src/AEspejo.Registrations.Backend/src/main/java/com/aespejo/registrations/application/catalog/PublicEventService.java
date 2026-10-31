@@ -47,7 +47,7 @@ public class PublicEventService {
             List<PublicModalityResponse> modalities) {
     }
 
-    /** One card of the landing calendar. Ported from {@code EventoPublicoResumenDto}, with English field names. */
+    /** One card of the landing calendar., with English field names. */
     public record PublicEventSummary(
             Integer id,
             String name,
@@ -98,8 +98,7 @@ public class PublicEventService {
     }
 
     /**
-     * The published events of one brand, newest first, for the landing calendar. Ported from
-     * {@code ListarEventosPublicadosAsync}: each landing asks for its own brand, so one calendar never shows the other
+     * The published events of one brand, newest first, for the landing calendar.: each landing asks for its own brand, so one calendar never shows the other
      * brand's events. Drafts are never listed.
      */
     public List<PublicEventSummary> listPublished(String brandCode) {

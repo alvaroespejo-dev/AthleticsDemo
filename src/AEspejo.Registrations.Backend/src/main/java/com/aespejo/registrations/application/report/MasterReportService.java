@@ -26,8 +26,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * The master report of an event: totals by modality, distance, category and shirt size. Ported from
- * {@code ServicioReportes}. Only live registrations count: pending, paid and under review.
+ * The master report of an event: totals by modality, distance, category and shirt size. Only live registrations count: pending, paid and under review.
  */
 @Service
 @Transactional(readOnly = true)

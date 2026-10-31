@@ -168,8 +168,8 @@ public class RegistrationService {
                 .orElseThrow(() -> new BusinessRuleException("registration.price.noCurrentTier", modality.getName()));
         int amount = tier.getPriceCents() + kit.getSurchargeCents() + event.getServiceFeeCents();
 
-        // Money Sport: the athlete can pay part of the registration with the virtual balance. Same rules as the C#
-        // reference: the amount used cannot exceed the balance nor the total.
+        // Money Sport: the athlete can pay part of the registration with the virtual balance. Same rules as before:
+        // the amount used cannot exceed the balance nor the total.
         int discount = request.useMoneySportBalanceCents() == null ? 0 : request.useMoneySportBalanceCents();
         int balance = (int) movements.balanceOf(athlete.getId());
         if (discount < 0 || discount > balance) {
@@ -207,7 +207,7 @@ public class RegistrationService {
         registration.setReferralCode(blankToNull(request.referralCode()));
         registrations.save(registration);
 
-        // The use of the balance is recorded as a negative movement, the same convention as the C# reference.
+        // The use of the balance is recorded as a negative movement, the usual convention.
         if (discount > 0) {
             MoneySportMovement use = new MoneySportMovement();
             use.setAthlete(athlete);
@@ -236,7 +236,7 @@ public class RegistrationService {
 
     /**
      * Whether the athlete has a QR to pay with. With money sport credit the amount left is open, so the generic QR
-     * applies; otherwise the QR of the tier and kit. Ported from {@code ServicioQrCobro.ObtenerPorInscripcionAsync}.
+     * applies; otherwise the QR of the tier and kit..
      */
     private boolean hasPaymentQr(PriceTier tier, Kit kit, boolean usesCredit) {
         if (usesCredit) {
@@ -446,7 +446,7 @@ public class RegistrationService {
     }
 
     /**
-     * Assigns or clears the bib (the C# {@code AsignarDorsalAsync}). A bib outside the modality's range is
+     * Assigns or clears the bib . A bib outside the modality's range is
      * accepted and returned with a warning, because replacements and courtesy bibs happen on race day.
      */
     public BibAssignmentResponse assignBib(int id, BibRequest request) {
@@ -485,7 +485,7 @@ public class RegistrationService {
     }
 
     /**
-     * Cancels a registration that will not happen (the C# {@code AnularAsync}). Only pending, under-review or expired
+     * Cancels a registration that will not happen . Only pending, under-review or expired
      * registrations can be cancelled, a registration with money received must be refunded or have its payment removed
      * first, and the Money Sport debit of its discount is reversed so the athlete gets the balance back.
      */
@@ -539,7 +539,7 @@ public class RegistrationService {
     }
 
     /**
-     * Records the participation result of one registration (the C# {@code RegistrarResultadoAsync}): only
+     * Records the participation result of one registration : only
      * paid registrations, only from the event day onwards, and the Money Sport credit follows the result.
      */
     public RegistrationListItem setResult(int id, ResultRequest request) {
@@ -631,7 +631,7 @@ public class RegistrationService {
 
     /**
      * Records the same participation result for several registrations of one event, in one transaction
-     * (the C# {@code RegistrarResultadoLoteAsync}). A registration is skipped, not failed, when it is not
+     * . A registration is skipped, not failed, when it is not
      * paid or when undoing a "Finished" credit would leave the Money Sport balance negative, so one bad
      * row does not block the batch. A result is only accepted from the event day onwards.
      */

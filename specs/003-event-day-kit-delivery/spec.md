@@ -4,57 +4,54 @@
 
 **Created**: 2026-10-06
 
-**Status**: Deferred. The delivery write side is not in the C# reference and is not part of the interview demo (see `specs/007-java-backend-port/spec.md`, Scope).
+**Status**: Deferred. The delivery write side is not implemented, and it is not part of the interview demo (see `specs/007-backend-api/spec.md`, Scope).
 
 **Input**: README phase 7 "Event day" (status: Pending).
 
-## Current State (audit)
+## Current State
 
-- **C# reference (`AEspejo.InscripcionesBackupCSharp/src`)**:
-  - Working: `EntregaKit` entity (`Domain/Entities/EntregaKit.cs`), the read side in
-    `ServicioAdminInscripciones` (`KitEntregado` flag, delivered/undelivered filter, `KitsEntregados`
-    counter), role `StaffKits`, policy `Operacion`, bib assignment, public QR per registration.
-  - Rule in C#: `ServicioPagos.RevertirAsync` refuses to revert a payment when a kit was delivered.
-  - Not in C#: the write side (register delivery, revert delivery, live board, search for staff).
-    *Design required.*
-- **Java target**: `KitDelivery` entity and `KitDeliveryRepository` exist; `PaymentService` already
-  checks `existsByRegistrationId`. No delivery service, controller or board exists.
-- Missing in both: delivery write, staff search by code, live dashboard, mobile screen.
+- **Working**: the `KitDelivery` entity, the read side in `RegistrationService` (`KitDelivered` flag, delivered and
+  undelivered filter, delivered-kits counter), the `KitStaff` role, the operations policy, bib assignment and the
+  public QR per registration.
+- **Rule in place**: `PaymentService` refuses to revert a payment when a kit was delivered.
+- **Not implemented yet**: the write side (register delivery, revert delivery, live board, staff search).
+  *Design required.*
+- The `KitDelivery` entity and `KitDeliveryRepository` exist. `PaymentService` already checks for a delivery.
+  No delivery service, controller or board exists.
 
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Deliver a kit (Priority: P1)
 
-Kit staff finds a registration (by scanned code, bib or name) and confirms the kit delivery,
-optionally noting who picked it up.
+Kit staff finds a registration (by scanned code, bib or name) and confirms the kit delivery, optionally noting who
+picked it up.
 
 **Why this priority**: It is the core operation of event day.
 
-**Independent Test**: Register a delivery for a paid registration; verify `EntregaKit` is created,
-the list shows `KitEntregado`, and a second delivery is rejected.
+**Independent Test**: Register a delivery for a paid registration; verify that `KitDelivery` is created, the list
+shows `KitDelivered`, and a second delivery is rejected.
 
 **Acceptance Scenarios**:
 
-1. **Given** a paid registration without delivery, **When** staff confirms, **Then** an `EntregaKit`
-   is stored with user, timestamp and delivery point.
-2. **Given** a registration already delivered, **When** staff tries again, **Then** a conflict error
-   shows who delivered it and when.
-3. **Given** a registration that is not paid (pending, cancelled, expired), **When** staff tries to
-   deliver, **Then** it is rejected with a clear reason [NEEDS CLARIFICATION: can unpaid-but-pending
-   registrations be delivered with a supervisor override?].
+1. **Given** a paid registration without delivery, **When** staff confirms, **Then** a `KitDelivery` is stored with
+   the user, the timestamp and the delivery point.
+2. **Given** a registration already delivered, **When** staff tries again, **Then** a conflict error shows who
+   delivered it and when.
+3. **Given** a registration that is not paid (pending, cancelled, expired), **When** staff tries to deliver, **Then**
+   it is rejected with a clear reason. [NEEDS CLARIFICATION: can unpaid but pending registrations be delivered with
+   a supervisor override?]
 
 ---
 
 ### User Story 2 - Live delivery board (Priority: P2)
 
-A coordinator sees delivered vs. pending kits per modality and per delivery point, refreshed
-automatically.
+A coordinator sees delivered and pending kits per modality and per delivery point, refreshed automatically.
 
 **Independent Test**: Deliver several kits; the board counters match the database.
 
 **Acceptance Scenarios**:
 
-1. **Given** deliveries in progress, **When** the board refreshes, **Then** totals update within 30 seconds.
+1. **Given** deliveries in progress, **When** the board refreshes, **Then** the totals update within 30 seconds.
 
 ---
 
@@ -62,36 +59,37 @@ automatically.
 
 An administrator reverts a wrongly registered delivery; the reversal is audited.
 
-**Independent Test**: Undo a delivery and verify the registration is again pending delivery and an
-audit entry exists.
+**Independent Test**: Undo a delivery and verify that the registration is pending delivery again and that an audit
+entry exists.
 
 **Acceptance Scenarios**:
 
-1. **Given** a delivered kit, **When** an administrator reverts it, **Then** `EntregaKit` is removed
-   and the change appears in `RegistroAuditoria`.
+1. **Given** a delivered kit, **When** an administrator reverts it, **Then** the `KitDelivery` is removed and the
+   change appears in the audit records.
 
 ### Edge Cases
 
-- Two staff members delivering the same registration simultaneously (unique index on `InscripcionId`).
-- Low connectivity at the venue [NEEDS CLARIFICATION: is offline mode required?].
-- Bib not assigned yet at delivery time.
-- Third-party pickup requires `RetiradoPor`.
+- Two staff members delivering the same registration at the same time (unique index on `RegistrationId`).
+- Low connectivity at the venue. [NEEDS CLARIFICATION: is offline mode required?]
+- A bib not yet assigned at delivery time.
+- A third-party pickup, which requires the name of the person who picks up the kit.
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
-- **FR-001**: System MUST let `Operacion` roles register a kit delivery once per registration.
-- **FR-002**: System MUST find registrations by public code, bib number, document number or name.
-- **FR-003**: System MUST reject deliveries for registrations not in a deliverable state.
-- **FR-004**: System MUST show a live board with delivered/pending counts per modality and delivery point.
-- **FR-005**: Only administrators MUST be able to revert a delivery; every change is audited.
-- **FR-006**: The staff screen MUST be usable on a phone [NEEDS CLARIFICATION: QR scanning inside the app via camera?].
+- **FR-001**: The system MUST let staff with the operations role register a kit delivery once per registration.
+- **FR-002**: The system MUST find registrations by public code, bib number, document number or name.
+- **FR-003**: The system MUST reject deliveries for registrations that are not in a deliverable state.
+- **FR-004**: The system MUST show a live board with delivered and pending counts per modality and delivery point.
+- **FR-005**: Only administrators MUST be able to revert a delivery, and every change is audited.
+- **FR-006**: The staff screen MUST be usable on a phone. [NEEDS CLARIFICATION: is QR scanning inside the app, with
+  the camera, required?]
 
 ### Key Entities
 
-- **EntregaKit**: one delivery per registration (unique), existing entity.
-- **Inscripcion**: provides state, bib and kit definition.
+- **KitDelivery**: one delivery per registration (unique). Existing entity.
+- **Registration**: provides the state, the bib and the kit definition.
 
 ## Success Criteria *(mandatory)*
 
@@ -99,9 +97,9 @@ audit entry exists.
 
 - **SC-001**: A delivery is registered in under 15 seconds from search to confirmation.
 - **SC-002**: No registration can have two deliveries.
-- **SC-003**: Board numbers match database totals at all times (verified in tests).
+- **SC-003**: Board numbers match the database totals at all times (verified in tests).
 
 ## Assumptions
 
-- Staff authenticate with the existing JWT login and role `StaffKits`.
-- Delivery points are free text (`PuntoEntrega`) for now.
+- Staff authenticate with the existing JWT login and the `KitStaff` role.
+- Delivery points are free text for now.

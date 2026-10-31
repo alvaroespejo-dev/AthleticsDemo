@@ -27,7 +27,7 @@ public class ModalityController {
         this.modalities = modalities;
     }
 
-    /** Read-only accounts can see a modality, as in the C# {@code Politicas.Lectura} override. */
+    /** Read-only accounts can see a modality. */
     @PreAuthorize(Policies.READ)
     @GetMapping("/api/modalities/{id}")
     public ModalityResponse get(@PathVariable int id) {

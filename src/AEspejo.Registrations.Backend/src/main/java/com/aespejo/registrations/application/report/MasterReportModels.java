@@ -2,7 +2,7 @@ package com.aespejo.registrations.application.report;
 
 import java.util.List;
 
-/** Contracts of the master report, ported from {@code DtosReporteMaestro.cs}. */
+/** Contracts of the master report. */
 public final class MasterReportModels {
 
     private MasterReportModels() {

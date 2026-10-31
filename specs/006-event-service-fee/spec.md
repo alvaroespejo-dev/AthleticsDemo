@@ -6,21 +6,19 @@
 
 **Status**: Implemented (pending review)
 
-**Input**: "Each event reads the service fee from Configuration ("Monto por servicio (Bs)"). If I change
+**Input**: "Each event reads the service fee from Configuration ("Service fee (USD)"). If I change
 it today while an event has registrations in progress, that event must keep its own service fee,
 independent of the Configuration it was created with."
 
-## Current State (audit)
+## Current State
 
-- `ConfiguracionSistema.MontoServicioCentavos` (global, default 400) is read live by
-  `ServicioInscripcionPublica` (public event view and registration price) and by the admin pricing
-  table (`SeccionModalidades.tsx`, `CuadroPrecios`).
-- `Inscripcion.MontoCentavos` is already a snapshot, so already-created registrations keep their
+- `SystemSettings.ServiceFeeCents` (global, default 400) is read live by `PublicEventService` (public event view
+  and registration price) and by the admin pricing table in the modalities section.
+- `Registration.AmountCents` is already a snapshot, so already-created registrations keep their
   amount. What changes today when Configuration changes: the price shown and charged to **new**
   registrants of events in progress, the final price in the admin table, and the exact amount each
   per-price payment QR must carry (a QR generated for the old amount stops matching).
-- The existing test `ConfiguracionApiTests` asserted the opposite behavior (global fee, applied
-  immediately) and is superseded by this feature.
+- An earlier test asserted the opposite behavior (global fee, applied immediately). This feature supersedes it.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -34,10 +32,10 @@ athlete: the price and the registration amount still use the old fee.
 
 **Acceptance Scenarios**:
 
-1. **Given** an event created with the global fee Bs 4, **When** the global fee changes to Bs 10,
-   **Then** the public price and new registrations of that event still include Bs 4.
-2. **Given** the global fee is Bs 10, **When** a new event is created without an explicit fee,
-   **Then** the event stores Bs 10 as its own fee.
+1. **Given** an event created with the global fee USD 4, **When** the global fee changes to USD 10,
+   **Then** the public price and new registrations of that event still include USD 4.
+2. **Given** the global fee is USD 10, **When** a new event is created without an explicit fee,
+   **Then** the event stores USD 10 as its own fee.
 3. **Given** events that existed before this feature, **When** the system is upgraded, **Then** each
    stores the global fee that was active at upgrade time (no price changes at upgrade).
 
@@ -53,33 +51,33 @@ registrations; existing registrations keep their stored amount.
 **Acceptance Scenarios**:
 
 1. **Given** an event with registrations, **When** its fee is edited, **Then** existing registrations
-   keep `MontoCentavos` and the pricing table and public price show the new fee.
+   keep `AmountCents` and the pricing table and public price show the new fee.
 2. **Given** an update request that omits the fee, **When** saved, **Then** the stored fee is kept.
 
 ### Edge Cases
 
 - Changing the event fee invalidates payment QRs generated for the old final price; the form warns
   about it.
-- Fee range stays Bs 0 to Bs 100 (same validation as Configuration).
+- Fee range stays USD 0 to USD 100 (same validation as Configuration).
 - Each brand has its own API and database: the migration runs per database.
 
 ## Requirements *(mandatory)*
 
 ### Functional Requirements
 
-- **FR-001**: `Evento` MUST store its own service fee in cents (`MontoServicioCentavos`).
+- **FR-001**: `Event` MUST store its own service fee in cents (`ServiceFeeCents`).
 - **FR-002**: On event creation, when no fee is given, the system MUST copy the current global fee.
 - **FR-003**: The public event view, the registration amount and the admin pricing table MUST use the
   event's fee, never the live global value.
 - **FR-004**: The migration MUST backfill existing events with the global fee active at upgrade time.
 - **FR-005**: The event API MUST expose and accept the fee; omitting it on update keeps the stored value.
 - **FR-006**: The Configuration page MUST state that the value applies to new events only.
-- **FR-007**: Validation MUST be Bs 0 to Bs 100.
+- **FR-007**: Validation MUST be USD 0 to USD 100.
 
 ### Key Entities
 
-- **Evento**: gains `MontoServicioCentavos`.
-- **ConfiguracionSistema**: `MontoServicioCentavos` becomes the default for new events.
+- **Event**: gains `ServiceFeeCents`.
+- **SystemSettings**: `ServiceFeeCents` becomes the default for new events.
 
 ## Success Criteria *(mandatory)*
 

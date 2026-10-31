@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Fits an image inside a square without cropping it, filling the rest with white, and encodes it as JPEG (quality 85).
- * This is the {@code ResizeMode.Pad} behaviour of the C# reference, implemented with the JDK only.
+ * Pads the image to the target size, implemented with the JDK only.
  */
 @Component
 public class ImageResizer {

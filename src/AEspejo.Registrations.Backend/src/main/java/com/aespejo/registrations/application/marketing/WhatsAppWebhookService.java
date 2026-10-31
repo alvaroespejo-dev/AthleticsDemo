@@ -28,7 +28,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 /**
  * Ingests the payload Meta sends to the webhook: inbound messages and delivery statuses of messages sent from the inbox
- * and from campaigns. Ported from {@code ServicioWebhookWhatsApp}.
+ * and from campaigns..
  *
  * <p>Everything is defensive on purpose. Meta resends events, adds message types without notice, and can send several
  * {@code value} entries in one batch. A problem with one must not stop the others, so each {@code value} runs in its own

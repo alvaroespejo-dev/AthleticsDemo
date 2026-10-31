@@ -1,6 +1,6 @@
 # Tasks: Engineering Quality Baseline
 
-**Input**: [spec.md](spec.md), [plan.md](plan.md). Port rules: [007 spec](../007-java-backend-port/spec.md).
+**Input**: [spec.md](spec.md), [plan.md](plan.md).
 
 ## Phase 1: Clarification
 
@@ -15,11 +15,11 @@
 
 ## Phase 3: US2 - Frontend tests (P1)
 
-- [ ] T006 [US2] Install Vitest, React Testing Library and jsdom in `src/AEspejo.Inscripciones.Web`
+- [ ] T006 [US2] Install Vitest, React Testing Library and jsdom in `src/AEspejo.Registrations.Frontend`
 - [ ] T007 [US2] Configure test environment and `test` script in `package.json`
 - [ ] T008 [P] [US2] Tests for `src/api/cliente.ts` (`ErrorApi`, error extraction, 401)
 - [ ] T009 [P] [US2] Tests for `src/auth/RutaProtegida.tsx`
-- [ ] T010 [P] [US2] Tests for the Java adapter in `src/api/endpoints.ts` (route mapping and enum mapping)
+- [ ] T010 [P] [US2] Tests for the API route and enum mapping in `src/api/endpoints.ts`
 
 ## Phase 4: US3 - PR gate (P2)
 

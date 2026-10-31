@@ -30,7 +30,7 @@ VITE_APP_URL=https://localhost:5173
 
 ### ¿Por qué HTTP para la API?
 
-El backend (Spring Boot en `src/AEspejo.Inscripciones.Backend`) corre en HTTP en desarrollo local:
+El backend (Spring Boot en `src/AEspejo.Registrations.Backend`) corre en HTTP en desarrollo local:
 - Configurado en `src/main/resources/application.yml` (`server.port`)
 - URL HTTP: `http://localhost:5183`
 
@@ -40,7 +40,7 @@ Si intentas usar `https://localhost:5183` en el `.env.local`, el landing hará f
 
 Una vez configurado, verifica que:
 
-1. **Backend está activo**: `http://localhost:5183/api/publico/eventos?marca=ecotrail` devuelve JSON con eventos
+1. **Backend está activo**: `http://localhost:5183/api/public/events?brand=onesport` devuelve JSON con eventos
 2. **Landing obtiene eventos**: Al abrir `https://localhost:5174/#eventos` debería mostrar la lista de eventos (ignorar advertencia de certificado)
 
 ### Troubleshooting

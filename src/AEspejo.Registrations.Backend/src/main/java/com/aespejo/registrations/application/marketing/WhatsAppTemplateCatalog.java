@@ -3,7 +3,7 @@ package com.aespejo.registrations.application.marketing;
 import java.util.List;
 
 /**
- * Approved templates of a brand's WhatsApp Business account, ported from {@code ICatalogoPlantillasWhatsApp}. The panel
+ * Approved templates of a brand's WhatsApp Business account. The panel
  * needs this list even while sending still goes through the simulated provider.
  */
 public interface WhatsAppTemplateCatalog {

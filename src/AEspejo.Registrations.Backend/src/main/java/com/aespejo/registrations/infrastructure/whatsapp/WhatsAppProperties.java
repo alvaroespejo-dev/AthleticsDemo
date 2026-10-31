@@ -4,7 +4,7 @@ import java.util.Map;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * WhatsApp Cloud API settings, ported from {@code OpcionesWhatsApp} in the C# reference. The top-level values are the
+ * WhatsApp Cloud API settings. The top-level values are the
  * default for every brand. Each brand in {@link #brands()} can override them, keyed by brand code ({@code ecotrail},
  * {@code onesport}). Tokens come from environment variables, never from versioned files.
  */

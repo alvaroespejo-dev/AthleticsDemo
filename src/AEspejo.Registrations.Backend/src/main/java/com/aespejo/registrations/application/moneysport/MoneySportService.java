@@ -17,8 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Money Sport: the public page where an athlete checks the virtual money balance. Ported from
- * {@code ServicioMoneySport}. The page is deliberately thin: no contact or medical data, and the balance is only shown
+ * Money Sport: the public page where an athlete checks the virtual money balance. The page is deliberately thin: no contact or medical data, and the balance is only shown
  * when the document number matches the athlete's, so consecutive ids cannot reveal other people's balances.
  */
 @Service

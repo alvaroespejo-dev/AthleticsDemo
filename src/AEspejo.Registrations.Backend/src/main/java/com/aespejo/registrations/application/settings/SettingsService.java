@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Organization-wide defaults. Ported from {@code ServicioConfiguracion}. The row is created on first read, so a fresh
+ * Organization-wide defaults.. The row is created on first read, so a fresh
  * installation can always be queried.
  */
 @Service

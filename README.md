@@ -18,10 +18,9 @@ through i18n. The full rule and its exceptions are in [`CLAUDE.md`](CLAUDE.md) a
 
 | Folder | Contents |
 |---|---|
-| `src/AEspejo.Inscripciones.Backend` | REST API (Spring Boot, JPA, Flyway) |
-| `src/AEspejo.Inscripciones.Web` | Admin panel (React + Vite), consumes the API |
-| `src/AEspejo.Landing.EcoTrail` | Public landing page for EcoTrail (Vite) |
-| `src/landings-comun` | Code shared by the landing pages (event calendar) |
+| `src/AEspejo.Registrations.Backend` | REST API (Spring Boot, JPA, Flyway) |
+| `src/AEspejo.Registrations.Frontend` | Admin panel (Next.js), consumes the API |
+| `src/AEspejo.Landing.AthleticsDemo` | Public landing page (Vite) |
 | `deploy/` | Docker Compose file for PostgreSQL |
 | `docs/` | Project documentation and glossary |
 | `specs/` | Feature specifications (spec, plan, tasks) |
@@ -76,7 +75,7 @@ Environment variables read by `application.yml`:
 | `CORS_ORIGINS` | empty | Comma-separated origins allowed to call the API from a browser, for example the landing pages in development: `https://localhost:5173,https://localhost:5174` |
 
 ```bash
-cd src/AEspejo.Inscripciones.Backend
+cd src/AEspejo.Registrations.Backend
 ./mvnw spring-boot:run        # Windows: mvnw.cmd spring-boot:run
 ```
 
@@ -91,7 +90,7 @@ Compile and run the tests:
 ## Admin panel
 
 ```bash
-cd src/AEspejo.Inscripciones.Web
+cd src/AEspejo.Registrations.Frontend
 npm install
 npm run dev
 ```
@@ -99,15 +98,15 @@ npm run dev
 The panel runs on `http://localhost:5173` and forwards `/api/*` to the backend on port 5183.
 Per-brand builds: `npm run build:ecotrail` and `npm run build:onesport`.
 
-## EcoTrail landing page
+## Landing page
 
 ```bash
-cd src/AEspejo.Landing.EcoTrail
+cd src/AEspejo.Landing.AthleticsDemo
 npm install
 npm run dev
 ```
 
-The event calendar is loaded from `src/landings-comun/eventos.js`.
+The event calendar is loaded from `src/AEspejo.Landing.AthleticsDemo/landing/eventos.js`.
 
 ## Migration status
 

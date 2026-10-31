@@ -22,8 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Callback of Meta's Cloud API: inbound messages and delivery statuses arrive here. Ported from
- * {@code WebhookWhatsAppController}. It is anonymous because Meta does not send our JWT; authentication is the
+ * Callback of Meta's Cloud API: inbound messages and delivery statuses arrive here. It is anonymous because Meta does not send our JWT; authentication is the
  * {@code X-Hub-Signature-256} signature made with the app secret. Every brand points at this same URL, and routing to the
  * brand happens inside, by {@code phone_number_id}. Public access is granted in {@code SecurityConfig}.
  */

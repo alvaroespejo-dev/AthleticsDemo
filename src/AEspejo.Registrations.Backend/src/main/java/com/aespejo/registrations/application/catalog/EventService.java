@@ -59,7 +59,7 @@ public class EventService {
     }
 
     /**
-     * Lists events. When this deployment is fixed to one brand ({@code brand.fixed-code}, as the C# {@code CodigoFijo}),
+     * Lists events. When this deployment is fixed to one brand ({@code brand.fixed-code}),
      * that brand wins over whatever the request asks for.
      */
     @Transactional(readOnly = true)

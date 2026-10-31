@@ -18,7 +18,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestClientResponseException;
 
 /**
- * Sends through the official WhatsApp Cloud API (Meta Graph API), ported from {@code ProveedorWhatsAppMeta}. Marketing
+ * Sends through the official WhatsApp Cloud API (Meta Graph API). Marketing
  * messages outside the 24-hour window must be approved templates, so a campaign always sends a template and never free
  * text. The rendered body goes as positional parameters, in the order the placeholders appear.
  */

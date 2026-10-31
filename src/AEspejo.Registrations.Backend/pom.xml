@@ -110,7 +110,7 @@
       <artifactId>junit-jupiter</artifactId>
       <scope>test</scope>
     </dependency>
-    <!-- WebP decoding for ImageIO. The JDK codecs read only PNG and JPEG, while the C# reference (ImageSharp)
+    <!-- WebP decoding for ImageIO. The JDK codecs read only PNG and JPEG, while ImageSharp
          accepts WebP uploads for event and kit images, so without this plugin a WebP upload cannot be resized. -->
     <dependency>
       <groupId>com.twelvemonkeys.imageio</groupId>

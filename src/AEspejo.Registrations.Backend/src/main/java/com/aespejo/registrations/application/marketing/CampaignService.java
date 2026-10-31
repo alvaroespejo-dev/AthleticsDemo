@@ -38,7 +38,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Creates and controls WhatsApp campaigns, ported from {@code ServicioCampanias}. Nothing is sent here: recipients are
+ * Creates and controls WhatsApp campaigns. Nothing is sent here: recipients are
  * built and the state moves, and the background dispatcher does the rest. This way "Send" answers at once even when the
  * audience has thousands of people.
  */
@@ -74,7 +74,7 @@ public class CampaignService {
     @Transactional(readOnly = true)
     /**
      * Lists campaigns. Unlike events, this list never took a brand parameter: it shows both brands, and is narrowed only
-     * when the deployment is fixed to one brand ({@code brand.fixed-code}, as the C# {@code CodigoFijo}).
+     * when the deployment is fixed to one brand ({@code brand.fixed-code}).
      */
     public PageResponse<CampaignSummary> list(int page, int size) {
         var request = PageMapper.request(page, size);

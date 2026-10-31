@@ -5,15 +5,13 @@ Guidance for Claude Code and other coding agents working in this repository.
 ## Project
 
 AEspejo.Inscripciones: registration system for sports events. The backend is a new Java 21 +
-Spring Boot 3.5 REST API backed by SQLite (default) or PostgreSQL (profile `postgresql`). It does not reuse the earlier .NET backend, and no
-code, comments, documents or names should refer to it.
+Spring Boot 3.5 REST API backed by SQLite (default) or PostgreSQL (profile `postgresql`).
 
 Folders:
 
-- `src/AEspejo.Inscripciones.Backend`: Java REST API (Maven, Flyway, JPA).
-- `src/AEspejo.Inscripciones.Web`: React admin panel that consumes the API.
-- `src/AEspejo.Landing.EcoTrail`: public landing page.
-- `src/landings-comun`: code shared by the landings.
+- `src/AEspejo.Registrations.Backend`: Java REST API (Maven, Flyway, JPA).
+- `src/AEspejo.Registrations.Frontend`: admin panel (Next.js) that consumes the API.
+- `src/AEspejo.Landing.AthleticsDemo`: public landing page (Vite).
 - `deploy/`: Docker Compose for PostgreSQL.
 - `specs/`: feature specifications (spec, plan, tasks).
 - `.specify/`: spec-kit templates and the project constitution.
@@ -50,14 +48,14 @@ Existing Spanish identifiers are not exempt. Rename them when you touch them.
 ## Backend commands
 
 ```bash
-cd src/AEspejo.Inscripciones.Backend
+cd src/AEspejo.Registrations.Backend
 ./mvnw spring-boot:run       # Windows: mvnw.cmd spring-boot:run
 ./mvnw verify
 ```
 
 Configuration comes from environment variables read in `application.yml`: `DB_URL`, `DB_USER`,
 `DB_PASSWORD`, `JWT_SECRET`, `INITIAL_ADMIN_PASSWORD`. Flyway runs the migrations in
-`src/main/resources/db/migration` at startup, and Hibernate validates the entities against the
+`src/AEspejo.Registrations.Backend/src/main/resources/db/migration` at startup, and Hibernate validates the entities against the
 schema (`ddl-auto: validate`).
 
 ## Working agreements

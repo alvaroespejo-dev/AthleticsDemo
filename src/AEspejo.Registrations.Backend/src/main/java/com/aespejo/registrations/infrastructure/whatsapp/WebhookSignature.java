@@ -8,7 +8,7 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * Checks the {@code X-Hub-Signature-256} header Meta sends with every webhook POST, ported from {@code FirmaWebhookMeta}.
+ * Checks the {@code X-Hub-Signature-256} header Meta sends with every webhook POST.
  * It works on the raw bytes Meta sent, before any parsing.
  */
 public final class WebhookSignature {

@@ -27,7 +27,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Manual payments and their reversal, ported from {@code ServicioPagos} in the C# reference.
+ * Manual payments and their reversal.
  * An amount that covers the expected price (within the event's tolerance) marks the registration as paid,
  * a shortfall sends it to review, and an overpayment is kept as a credit balance instead of being lost.
  * Notes written to the registration are resolved in the language of the request.
@@ -187,7 +187,7 @@ public class PaymentService {
             applyResult(registration, comparison, null, now);
             message = msg("payment.update.statusChanged", statusLabel(registration.getStatus()));
         } else {
-            // Without an amount change only the notes are updated, as in the C# reference.
+            // Without an amount change only the notes are updated, as.
             registration.setNotes(blankToNull(request.notes()));
         }
         return outcome(paymentId, registration, total, message);
@@ -207,7 +207,7 @@ public class PaymentService {
     }
 
     /**
-     * Moves the registration to the status that matches the money received. As in the C# reference, the notes
+     * Moves the registration to the status that matches the money received. As, the notes
      * are replaced by the manual notes plus the automatic note of this result (not appended).
      */
     private void applyResult(Registration registration, Comparison comparison, String manualNotes, OffsetDateTime now) {
@@ -275,7 +275,7 @@ public class PaymentService {
                 payment.getRule());
     }
 
-    /** Joins a manual note and an automatic note, as {@code Combinar} does in the C# reference. */
+    /** Joins a manual note and an automatic note, as {@code Combinar} does. */
     private String combine(String manual, String automatic) {
         if (manual == null || manual.isBlank()) {
             return automatic;
@@ -283,7 +283,7 @@ public class PaymentService {
         return manual.trim() + " — " + automatic;
     }
 
-    /** Money as the C# reference shows it: "USD 1,234.50" (N2 with thousands separator). */
+    /** Money formatted as: "USD 1,234.50" (N2 with thousands separator). */
     public static String bolivianos(long cents) {
         return "USD " + BigDecimal.valueOf(cents).movePointLeft(2).setScale(2, RoundingMode.HALF_UP)
                 .toPlainString().replaceFirst("(\\d)(?=(\\d{3})+\\.)", "$1,");

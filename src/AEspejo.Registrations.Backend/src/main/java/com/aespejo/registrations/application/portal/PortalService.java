@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Athlete self-service through an external identity provider. Ported from {@code ServicioPortalAtleta}.
+ * Athlete self-service through an external identity provider..
  *
  * The rules that protect the register: an external account is linked to an existing athlete only when the provider
  * verified the same e-mail; a claim needs document plus phone and stops after repeated failures; a document that is
@@ -220,7 +220,7 @@ public class PortalService {
 
     /**
      * "ana@gmail.com" becomes "a•••@gmail.com": enough for the owner to recognise the account, not enough to search.
-     * The bullet is the same character the C# {@code Enmascarar} uses.
+     * The bullet is the mask character.
      */
     static String mask(String email) {
         if (email == null || email.isBlank()) {

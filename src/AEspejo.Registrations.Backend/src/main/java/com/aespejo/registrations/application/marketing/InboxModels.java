@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Size;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-/** What the WhatsApp inbox screens read and write. Ported from {@code DtosBandeja}, with English field names. */
+/** What the WhatsApp inbox screens read and write., with English field names. */
 public final class InboxModels {
 
     private InboxModels() {

@@ -25,7 +25,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestClientResponseException;
 
 /**
- * Reads a brand's approved templates from the Graph API, ported from {@code CatalogoPlantillasWhatsAppMeta}. Asking
+ * Reads a brand's approved templates from the Graph API. Asking
  * which messages may be sent needs a different permission and endpoint than sending them, so it is a separate class
  * from {@link MetaWhatsAppSender}. Only successful results are cached: caching a failure would keep showing the same
  * error for five minutes after the credential was fixed.

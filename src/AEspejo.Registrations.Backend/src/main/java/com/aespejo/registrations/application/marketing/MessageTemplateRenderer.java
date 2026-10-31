@@ -13,7 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Resolves the {@code {{variable}}} placeholders of a campaign body, ported from {@code RenderizadorPlantilla}. The double
+ * Resolves the {@code {{variable}}} placeholders of a campaign body. The double
  * braces are the format of Meta templates, so the same body serves the panel preview and the positional parameters of
  * the Cloud API. Unknown variables are rejected when the campaign is saved, not when it is sent.
  */
@@ -71,7 +71,7 @@ public final class MessageTemplateRenderer {
 
     /**
      * The values of the variables used by the body, in order of appearance. This is the {@code parameters} list of a
-     * Meta template: named variables first, then positional ones, as in the C# reference.
+     * Meta template: named variables first, then positional ones, as.
      */
     public static List<String> parameters(String body, Context context) {
         List<String> values = new ArrayList<>();

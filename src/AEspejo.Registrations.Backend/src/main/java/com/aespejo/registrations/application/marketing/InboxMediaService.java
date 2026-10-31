@@ -13,8 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Downloads the media of inbound WhatsApp messages (photos, audio, documents) and stores it with {@link FileStore}.
- * Ported from {@code DescargaMediaWhatsAppHostedService}. It runs apart from the webhook for the same reason as in the
- * C# reference: a multi-megabyte audio inside the POST Meta expects to confirm in seconds would make Meta time out.
+ *. It runs apart from the webhook for the same reason as in the
+ * A multi-megabyte audio inside the POST Meta expects to confirm in seconds would make Meta time out.
  */
 @Service
 @Transactional

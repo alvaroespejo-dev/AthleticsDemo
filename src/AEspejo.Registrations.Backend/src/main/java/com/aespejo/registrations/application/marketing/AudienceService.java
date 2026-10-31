@@ -34,7 +34,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Who receives a campaign: the audience built from a {@link Filter}. Ported from {@code ServicioAudiencia}. Consent is
+ * Who receives a campaign: the audience built from a {@link Filter}.. Consent is
  * always required, unsubscribed athletes are never included, and one message goes per phone number.
  *
  * Conditions are translated to in-memory predicates. The register is a few thousand people at most, which keeps every
@@ -196,7 +196,7 @@ public class AudienceService {
         };
     }
 
-    /** Text fields: the value is compared as it is, so accents matter (the same limit as the C# reference). */
+    /** Text fields: the value is compared as it is, so accents matter (the same limit as before). */
     private Predicate<Athlete> text(Condition condition, String value, java.util.function.Function<Athlete, String> field) {
         return switch (condition.operator()) {
             case Equal -> a -> value.equals(field.apply(a));
@@ -206,7 +206,7 @@ public class AudienceService {
         };
     }
 
-    /** A numeric range built from the operator: the same mapping as {@code ARango} in the C# reference. */
+    /** A numeric range built from the operator: the same mapping as {@code ARango}. */
     private Range range(Condition condition, String value) {
         int number;
         try {

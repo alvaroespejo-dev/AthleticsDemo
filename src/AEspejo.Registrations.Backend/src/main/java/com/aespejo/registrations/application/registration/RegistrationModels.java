@@ -85,7 +85,7 @@ public final class RegistrationModels {
             OffsetDateTime reservationExpiresAt) {
     }
 
-    /** Full view of one registration. Mirrors {@code InscritoDetalleDto} of the C# reference. */
+    /** Full view of one registration. Full registration view. */
     public record RegistrationDetail(
             Integer id,
             String code,
@@ -153,7 +153,7 @@ public final class RegistrationModels {
 
     /**
      * Result of assigning or clearing a bib. {@code warning} is set when the bib is valid but outside the
-     * modality's reserved range: the range only warns, it never blocks (as in the C# {@code ResultadoDorsalDto}).
+     * modality's reserved range: the range only warns, it never blocks .
      */
     public record BibAssignmentResponse(Integer registrationId, Integer bibNumber, String warning, String message) {
     }
@@ -181,10 +181,10 @@ public final class RegistrationModels {
         return measure == null ? null : measure + " " + type;
     }
 
-    /** Sort order of the registrant list, as in the C# reference ({@code OrdenInscritos}). */
+    /** Sort order of the registrant list, as ({@code OrdenInscritos}). */
     public enum RegistrationOrder { DateDesc, DateAsc, LastName, Bib, Modality }
 
-    /** One row of the registrant list. Mirrors {@code InscritoResumenDto} of the C# reference. */
+    /** One row of the registrant list. One row of the registration list. */
     public record RegistrationRow(
             Integer id,
             String code,

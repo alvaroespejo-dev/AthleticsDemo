@@ -17,7 +17,7 @@ public final class PaymentModels {
     }
 
     /** Body for registering a manual payment. Amounts are in cents. */
-    /** Limits match the C# {@code RegistrarPagoDto}: transaction 3-100 characters, amount up to USD 100,000. */
+    /** Limits: transaction 3-100 characters, amount up to USD 100,000. */
     public record RegisterPaymentRequest(
             @NotBlank @Size(min = 3, max = 100) String transactionNumber,
             @NotNull @Min(1) @Max(10_000_000) Integer amountCents,
@@ -27,7 +27,7 @@ public final class PaymentModels {
             @Size(max = 2000) String notes) {
     }
 
-    /** Reason of a reversal: required, at most 500 characters (C# {@code RevertirPagoDto}). */
+    /** Reason of a reversal: required, at most 500 characters . */
     public record RevertPaymentRequest(@NotBlank @Size(max = 500) String reason) {
     }
 

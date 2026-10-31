@@ -25,8 +25,7 @@ function reescribirEnlaceCorto(): Plugin {
 // App, independiente del App Service que sirve la API y el SPA: un cambio de copy no
 // redespliega el backend.
 //
-// Es un sitio de una sola página HTML sin framework, así que no hace falta el plugin de React
-// que necesita AEspejo.Inscripciones.Web.
+// Es un sitio de una sola página HTML sin framework, así que no hace falta un plugin de framework.
 export default defineConfig({
   plugins: [basicSsl(), reescribirEnlaceCorto()],
   server: {

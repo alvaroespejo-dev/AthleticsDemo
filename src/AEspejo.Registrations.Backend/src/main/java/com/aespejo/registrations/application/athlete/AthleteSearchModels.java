@@ -4,7 +4,7 @@ import com.aespejo.registrations.domain.enums.DocumentType;
 import com.aespejo.registrations.domain.enums.Sex;
 import java.time.LocalDate;
 
-/** Contracts of the public athlete lookup. Mirrors {@code AtletaEncontradoDto} of the C# reference. */
+/** Contracts of the public athlete lookup. Contract returned for each athlete found. */
 public final class AthleteSearchModels {
 
     private AthleteSearchModels() {

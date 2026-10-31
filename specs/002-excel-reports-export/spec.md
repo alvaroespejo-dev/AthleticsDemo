@@ -4,21 +4,18 @@
 
 **Created**: 2026-10-06
 
-**Status**: Deferred. Not in the C# reference and not part of the interview demo (see `specs/007-java-backend-port/spec.md`, Scope).
+**Status**: Deferred. Not implemented, and not part of the interview demo (see `specs/007-backend-api/spec.md`, Scope).
 
 **Input**: README phase 5 "Reports with Excel export" (status: Pending).
 
-## Current State (audit)
+## Current State
 
-- **C# reference (`AEspejo.InscripcionesBackupCSharp/src`)**:
-  - Working: JSON master report (`ServicioReportes.ObtenerMaestroAsync`,
-    `GET api/eventos/{eventoId}/reportes/maestro`) with totals by modality, distance, category and
-    shirt size; registrant list with filters (`ServicioAdminInscripciones`); panel page `Reportes.tsx`.
-  - Not in C#: any file export. The package references are present, but no code uses ClosedXML or
-    QuestPDF. The Excel writer is *design required*.
-- **Java target**: no master report service, no registrant export, no file export. Port the JSON report
-  first (spec 007 task T013), then the export on top of it.
-- Missing in both: Excel and PDF export.
+- **Working**: JSON master report (`MasterReportService`, `GET /api/events/{eventId}/reports/master`) with totals
+  by modality, distance, category and shirt size; registrant list with filters (`RegistrationService`); panel page
+  `Reports` in the admin panel.
+- **Not implemented yet**: any file export. No Excel or PDF library is in use. The Excel writer is *design
+  required*.
+- The export builds on the JSON master report, so that report must be complete first.
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -55,7 +52,7 @@ A cashier exports the filtered registrant list (the same filters as the screen) 
 
 ### User Story 3 - PDF version (Priority: P3)
 
-[NEEDS CLARIFICATION: is a PDF required (QuestPDF is already referenced) or is Excel enough?]
+[NEEDS CLARIFICATION: is a PDF required (no PDF library is in use) or is Excel enough?]
 
 ### Edge Cases
 
@@ -71,14 +68,14 @@ A cashier exports the filtered registrant list (the same filters as the screen) 
 - **FR-001**: System MUST export the master report as `.xlsx` with data identical to the JSON report.
 - **FR-002**: System MUST export the registrant list honoring the active filters.
 - **FR-003**: Exports MUST be restricted to the `lectura` policy; personal data columns only for
-  `caja` and above [NEEDS CLARIFICATION: confirm which columns are sensitive].
+  the cashier role and above [NEEDS CLARIFICATION: confirm which columns are sensitive].
 - **FR-004**: Cell values MUST be sanitized against formula injection.
 - **FR-005**: The UI MUST show a download button and an error message on failure.
 - **FR-006**: Access to personal data in exports MUST be audited [NEEDS CLARIFICATION: required?].
 
 ### Key Entities
 
-- **Report row sets**: read models from `ReporteMaestroDto`; no new persisted entities.
+- **Report row sets**: read models of the master report; no new persisted entities.
 
 ## Success Criteria *(mandatory)*
 
@@ -91,4 +88,4 @@ A cashier exports the filtered registrant list (the same filters as the screen) 
 ## Assumptions
 
 - Existing report definitions are final; new report sections are out of scope.
-- ClosedXML (already a dependency) is the chosen library.
+- The Excel library is chosen in the plan.

@@ -23,9 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 /**
- * Uploaded files: event cover, runner manual, kit photo, payment QR codes, the generic QR and payment receipts. Ported
- * from the {@code ServicioImagenEvento}, {@code ServicioManualCorredor}, {@code ServicioImagenKit},
- * {@code ServicioQrCobro} and {@code ServicioComprobantePago} services of the C# reference.
+ * Uploaded files: event cover, runner manual, kit photo, payment QR codes, the generic QR and payment receipts.
  *
  * The new file is saved and referenced before the previous one is deleted, so a failure in the middle never leaves the
  * owner without a file.

@@ -3,7 +3,7 @@ package com.aespejo.registrations.application.marketing;
 import java.util.List;
 
 /**
- * Channel that sends WhatsApp messages, ported from {@code IProveedorMensajeria}. The campaign dispatcher and the inbox
+ * Channel that sends WhatsApp messages. The campaign dispatcher and the inbox
  * do not know whether behind it there is a call to the Cloud API or a simulated record: a brand decides which one.
  */
 public interface WhatsAppSender {

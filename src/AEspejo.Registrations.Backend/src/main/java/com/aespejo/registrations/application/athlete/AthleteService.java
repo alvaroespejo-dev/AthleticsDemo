@@ -31,8 +31,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * The athlete register: one row per person across all events. Ported from {@code ServicioAtletas} and
- * {@code ServicioPortalAtleta} (linked accounts) in the C# reference.
+ * The athlete register: one row per person across all events. and
+ * {@code ServicioPortalAtleta} (linked accounts).
  *
  * Filtering and sorting happen in memory. The register is a few thousand people at most, which keeps the
  * rules exact and easy to read; move them to queries if the register grows.

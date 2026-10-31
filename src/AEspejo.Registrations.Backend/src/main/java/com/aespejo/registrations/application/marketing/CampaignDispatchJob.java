@@ -7,7 +7,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
- * Empties the campaign queue at a controlled pace, ported from {@code DespachoCampaniasHostedService}. Every pass sends at
+ * Empties the campaign queue at a controlled pace. Every pass sends at
  * most a quarter of the configured messages per minute, so the real rate stays close to the limit without sleeping
  * inside a send. A failing campaign never stops the application: the error is logged and the next pass runs.
  */

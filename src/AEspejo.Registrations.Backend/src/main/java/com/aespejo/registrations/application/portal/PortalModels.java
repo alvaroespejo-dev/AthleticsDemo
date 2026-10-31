@@ -9,7 +9,7 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 
-/** Contracts of the athlete self-service portal, ported from {@code DtosPortalAtleta.cs}. */
+/** Contracts of the athlete self-service portal. */
 public final class PortalModels {
 
     private PortalModels() {

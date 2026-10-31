@@ -1,35 +1,35 @@
 # Implementation Plan: Historical Athlete Import
 
-**Branch**: `004-historical-athlete-import` | **Spec**: [spec.md](spec.md) | **Port**: [007](../007-java-backend-port/plan.md)
+**Branch**: `004-historical-athlete-import` | **Spec**: [spec.md](spec.md)
 
 ## Summary
 
 Build an import pipeline in Java: file reader (infrastructure), pure classification rules (domain), an
-`AthleteImportService` with preview, process, reprocess and undo, and a wizard in the panel. The C# reference
-has the entities and helpers only; the reader, classifier and service are *design required*.
+`AthleteImportService` with preview, process, reprocess and undo, and a wizard in the panel. The code has the
+entities and helpers only; the reader, classifier and service are *design required*.
 
-## Reference and target
+## Target
 
-| Concern | C# reference (`AEspejo.InscripcionesBackupCSharp/src`) | Java target |
-|---|---|---|
-| Batch entity | `Domain/Entities/LoteImportacionAtletas.cs` | `domain/entities/AthleteImportBatch.java` (exists) |
-| Row entity | `Domain/Entities/FilaImportacionAtleta.cs` | `domain/entities/AthleteImportRow.java` (exists) |
-| Equivalence entity | `Domain/Entities/EquivalenciaModalidad.cs` | `domain/entities/ModalityEquivalence.java` (exists) |
-| Text normalizing | `Domain/Services/Normalizador.cs` | `domain/services/DataNormalizer.java` (exists) |
-| Name similarity | `Domain/Services/SimilitudNombres.cs` | `domain/services/NameSimilarity.java` (to create, spec 007 T003) |
-| Document validation | `Application/Common/ValidadorDocumento.cs` | `domain/services/DocumentValidator.java` (to create) |
-| Category calculation | `Domain/Services/CalculadoraCategoria.cs` | `domain/services/AgeCategoryResolver.java` (exists) |
-| Athlete search | `Application/Inscripciones/ServicioBusquedaAtleta.cs` | `application/athlete/AthleteSearchService.java` (to create) |
-| File reader, row classifier, import service | **not in C#** | design required |
+| Concern | Java target |
+| --- | --- |
+| Batch entity | `domain/entities/AthleteImportBatch.java` (exists) |
+| Row entity | `domain/entities/AthleteImportRow.java` (exists) |
+| Equivalence entity | `domain/entities/ModalityEquivalence.java` (exists) |
+| Text normalizing | `domain/services/DataNormalizer.java` (exists) |
+| Name similarity | `domain/services/NameSimilarity.java` (to create) |
+| Document validation | `domain/services/DocumentValidator.java` (to create) |
+| Category calculation | `domain/services/AgeCategoryResolver.java` (exists) |
+| Athlete search | `application/athlete/AthleteSearchService.java` (to create) |
+| File reader, row classifier, import service | design required |
 
-## UI reference (panel, from the C# reference)
+## UI (panel)
 
-`navegacion.ts` lists **Importar históricos** (route `/importacion`, role `Admin`), marked `pendiente: true`.
-No page or route exists.
+The navigation lists **Importar históricos** (route `/importacion`, role `Admin`), marked as pending.
+No page or route exists yet.
 
 ## Technical Context
 
-**Language/Version**: Java 21, Spring Boot 3.5; TypeScript / React 19 (panel)
+**Language/Version**: Java 21, Spring Boot 3.5; TypeScript / Next.js (panel)
 
 **Primary Dependencies**: Apache POI for XLSX (proposed, not approved); JDK for CSV.
 
@@ -43,8 +43,8 @@ No page or route exists.
 
 ## Constitution Check
 
-- Layers: reader behind `AthleteFileReader` interface (application), implementation in infrastructure. PASS.
-- Data: audit through `Auditable`; dates normalized to UTC. PASS.
+- Layers: reader behind the `AthleteFileReader` interface (application), implementation in infrastructure. PASS.
+- Data: changes are audited; dates are normalized to UTC. PASS.
 - Validation: file content checked, not the extension. PASS.
 - Security: `Admin` role only. PASS.
 - Language: English names, routes and tables. PASS.
@@ -52,7 +52,7 @@ No page or route exists.
 ## Project Structure (new files)
 
 ```text
-src/AEspejo.Inscripciones.Backend/src/main/java/com/aespejo/registrations/
+src/AEspejo.Registrations.Backend/src/main/java/com/aespejo/registrations/
   application/athlete/AthleteFileReader.java                 (interface)
   application/athlete/AthleteImportService.java
   application/athlete/AthleteImportModels.java
@@ -61,7 +61,7 @@ src/AEspejo.Inscripciones.Backend/src/main/java/com/aespejo/registrations/
   infrastructure/athlete/CsvAthleteFileReader.java
   infrastructure/athlete/XlsxAthleteFileReader.java          (design required)
   api/athlete/AthleteImportController.java
-src/AEspejo.Inscripciones.Web/src/paginas/ImportacionAtletas.tsx   (panel wizard)
+src/AEspejo.Registrations.Frontend/src/features/athlete-import/   (panel wizard)
 src/test/java/.../ImportRowClassifierTest.java
 src/test/java/.../AthleteImportApiTest.java
 ```
@@ -87,4 +87,4 @@ records from `AthleteImportRow.athleteId` and `registrationId`).
 
 - Undo safety when an imported athlete later registers or claims a portal account.
 - Unknown source layout (FR-009) blocks mapping defaults.
-- Duplicate-detection thresholds and merge precedence are not in the C# reference; they must be decided.
+- Duplicate-detection thresholds and merge precedence are not defined yet; they must be decided.

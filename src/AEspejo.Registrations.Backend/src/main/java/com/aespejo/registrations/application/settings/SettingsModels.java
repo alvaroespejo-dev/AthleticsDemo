@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.OffsetDateTime;
 
-/** Contracts of the global settings, ported from {@code ConfiguracionDto} in the C# reference. */
+/** Contracts of the global settings. */
 public final class SettingsModels {
 
     private SettingsModels() {

@@ -45,7 +45,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * The WhatsApp inbox: what customers write to each brand's number, and the replies the operator sends from the panel.
- * Ported from {@code ServicioBandejaWhatsApp}.
+ *.
  *
  * <p>Replies that Meta refuses are saved with status Failed and returned, not thrown: the controller turns them into an
  * error after the transaction is committed, so the failed attempt stays on record.

@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Sends the pending messages of the campaigns in progress, ported from {@code ServicioDespachoCampanias}. It works in
+ * Sends the pending messages of the campaigns in progress. It works in
  * batches because the Cloud API has a rate limit, and a campaign of thousands cannot depend on the process staying alive
  * until the end: whatever was sent is recorded and the next pass continues where it stopped.
  */
