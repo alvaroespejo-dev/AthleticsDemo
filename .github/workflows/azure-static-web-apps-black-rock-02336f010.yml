@@ -26,6 +26,10 @@ jobs:
         with:
           node-version: 22
       - name: Build combined site
+        env:
+          NEXT_PUBLIC_DEMO_MODE: ${{ secrets.NEXT_PUBLIC_DEMO_MODE }}
+          NEXT_PUBLIC_DEMO_LOGIN_NAME: ${{ secrets.NEXT_PUBLIC_DEMO_LOGIN_NAME }}
+          NEXT_PUBLIC_DEMO_LOGIN_PASSWORD: ${{ secrets.NEXT_PUBLIC_DEMO_LOGIN_PASSWORD }}
         run: bash deploy/static-site/build.sh
       - name: Build And Deploy
         id: builddeploy
