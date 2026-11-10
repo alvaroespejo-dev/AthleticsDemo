@@ -77,6 +77,18 @@ export function LoginPage() {
           </div>
         </div>
 
+        {demoMode && demo.loginName && (
+          <div className="mb-4 rounded-md border border-dashed p-3 text-sm">
+            <p className="font-medium">Cuenta de demostración</p>
+            <p>
+              Usuario: <code className="font-mono">{demo.loginName}</code>
+            </p>
+            <p>
+              Contraseña: <code className="font-mono">{demo.password}</code>
+            </p>
+          </div>
+        )}
+
         <form onSubmit={submit} className="space-y-4">
           <Field id="loginName" label={t('auth.user')}>
             <Input
