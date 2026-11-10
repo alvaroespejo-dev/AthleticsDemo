@@ -21,7 +21,7 @@
       const slug = location.pathname.replace(/^\/inscripciones\/?/, '').replace(/\/$/, '')
 
       if (slug) {
-        location.replace(`${import.meta.env.VITE_APP_URL}/inscripcion/${encodeURIComponent(slug)}`)
+        location.replace(`${import.meta.env.VITE_APP_URL}/register/${encodeURIComponent(slug)}/`)
       } else {
         location.replace('/')
       }

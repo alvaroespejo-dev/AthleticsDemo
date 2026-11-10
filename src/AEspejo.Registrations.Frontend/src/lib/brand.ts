@@ -18,6 +18,8 @@
  *   *.azurestaticapps.net host behind the Static Web App.
  */
 
+import { withBasePath } from '@/lib/base-path'
+
 export interface Brand {
   code: string
   name: string
@@ -62,18 +64,19 @@ const ECOTRAIL: Brand = {
   shortName: 'Atletics Demo',
   portalTitle: 'Atletics Demo',
   adminTitle: 'Atletics Demo Admin',
-  logo: '/athleticsdemo-logo.jpg',
-  registrationLogo: '/athleticsdemo-logo.jpg',
-  loginLogo: '/athleticsdemo-logo.jpg',
+  logo: withBasePath('/athleticsdemo-logo.jpg'),
+  registrationLogo: withBasePath('/athleticsdemo-logo.jpg'),
+  loginLogo: withBasePath('/athleticsdemo-logo.jpg'),
   // Same value as src/app/globals.css: Atletics Demo does not change look with this refactor.
   primaryColor: '143 28% 17%',
-  landingUrl: 'https://www.ecotrailbolivia.com',
+  landingUrl: 'https://black-rock-02336f010.4.azurestaticapps.net',
   publicLogo: 'https://ecotrailbolivia.com/ecotrail-logo-small.png',
   returnOrigins: [
     'https://localhost:5174',
     'https://www.ecotrailbolivia.com',
     'https://ecotrailbolivia.com',
     'https://salmon-coast-0b3a4d310.7.azurestaticapps.net',
+    'https://black-rock-02336f010.4.azurestaticapps.net',
   ],
 }
 
@@ -83,9 +86,9 @@ const ONESPORT: Brand = {
   shortName: 'Atletics Demo',
   portalTitle: 'Atletics Demo',
   adminTitle: 'Atletics Demo Admin',
-  logo: '/athleticsdemo-logo.jpg',
-  registrationLogo: '/athleticsdemo-logo.jpg',
-  loginLogo: '/athleticsdemo-logo.jpg',
+  logo: withBasePath('/athleticsdemo-logo.jpg'),
+  registrationLogo: withBasePath('/athleticsdemo-logo.jpg'),
+  loginLogo: withBasePath('/athleticsdemo-logo.jpg'),
   // Darker orange than the landing's #ff6a2b: white button text did not reach minimum contrast on it.
   primaryColor: '21 90% 40%',
   landingUrl: 'https://www.onesportbolivia.com',
@@ -192,7 +195,7 @@ export function applyBrandColor(brand: Brand) {
  * Updates the tab favicon for the brand. Unlike the title (see `tabTitle`), the favicon does not
  * depend on the route, so it is applied once at startup.
  */
-export function applyBrandFavicon(brand: Brand) {
+export function applyBrandFavicon(_brand: Brand) {
   let icon = document.querySelector<HTMLLinkElement>('link[rel="icon"]')
   if (!icon) {
     icon = document.createElement('link')
@@ -200,7 +203,7 @@ export function applyBrandFavicon(brand: Brand) {
     document.head.appendChild(icon)
   }
   icon.type = 'image/svg+xml'
-  icon.href = '/ae-favicon.svg'
+  icon.href = withBasePath('/ae-favicon.svg')
 }
 
 /**

@@ -9,6 +9,7 @@ import type { AthleteParticipation, MoneySportCandidate, MoneySportDetail } from
 import { LanguageSelector } from '@/components/ui/LanguageSelector'
 import { Badge, Button, Card, Field, Input } from '@/components/ui/primitives'
 import { ErrorNotice, InfoNotice, Loading } from '@/components/ui/states'
+import { withBasePath } from '@/lib/base-path'
 import { countryDisplayName, OTHER_NATIONALITY } from '@/lib/countries'
 import { formatDate, formatMoney } from '@/lib/format'
 import { cn } from '@/lib/utils'
@@ -55,7 +56,7 @@ export function MoneySportPage() {
     <div className="min-h-screen bg-muted/40 py-6">
       <div className="mx-auto max-w-3xl space-y-6 px-4">
         <Card className="flex flex-wrap items-center justify-between gap-4 p-5">
-          <img src="/athleticsdemo-logo.jpg" alt={t('moneySport.title')} className="h-20 object-contain" />
+          <img src={withBasePath('/athleticsdemo-logo.jpg')} alt={t('moneySport.title')} className="h-20 object-contain" />
           <LanguageSelector />
         </Card>
 

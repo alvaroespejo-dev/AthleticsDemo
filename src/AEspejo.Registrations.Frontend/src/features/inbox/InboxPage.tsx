@@ -10,6 +10,7 @@ import { brands, inbox } from '@/api/endpoints'
 import type { ConversationSummary, InboxWindow, MessageView } from '@/api/types'
 import { Badge, Button, Card, Input, Select, Textarea } from '@/components/ui/primitives'
 import { EmptyState, ErrorNotice, InfoNotice, Loading } from '@/components/ui/states'
+import { withBasePath } from '@/lib/base-path'
 import { formatDateTime } from '@/lib/format'
 import { cn } from '@/lib/utils'
 import { ReplyTemplateDialog } from './ReplyTemplateDialog'
@@ -326,7 +327,7 @@ function Thread({ id, onArchived }: { id: number; onArchived: () => void }) {
             {c.athleteId && (
               <>
                 {' · '}
-                <a className="underline" href={`/athletes/?id=${c.athleteId}`}>
+                <a className="underline" href={withBasePath(`/athletes/?id=${c.athleteId}`)}>
                   {t('inboxPage.athleteFile')}
                 </a>
               </>

@@ -6,6 +6,7 @@ import { LanguageSelector } from '@/components/ui/LanguageSelector'
 import { Button, Card } from '@/components/ui/primitives'
 import { ErrorNotice } from '@/components/ui/states'
 import { type Brand, returnUrl } from '@/lib/brand'
+import { withBasePath } from '@/lib/base-path'
 
 interface Props {
   brand: Brand
@@ -49,7 +50,7 @@ export function AthleteLogin({ brand, onLogin, error }: Props) {
 
         <a
           className="mt-4 block text-center text-sm text-muted-foreground underline"
-          href={`/login?marca=${brand.code}`}
+          href={withBasePath(`/login?marca=${brand.code}`)}
           target="_blank"
           rel="noopener noreferrer"
         >

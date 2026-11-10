@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { Providers } from './providers'
+import { withBasePath } from '@/lib/base-path'
 
 export const metadata: Metadata = {
   title: 'AEspejo Admin',
   description: 'Event registration administration panel.',
-  icons: { icon: '/ae-favicon.svg' },
+  icons: { icon: withBasePath('/ae-favicon.svg') },
 }
 
 // The layout is server-rendered as static HTML. The language is set on the client by the i18n

@@ -3,6 +3,7 @@
 import type { ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
 import { Auth0Provider, type AppState } from '@auth0/auth0-react'
+import { BASE_PATH } from '@/lib/base-path'
 
 /**
  * The only Allowed Callback URL registered in Auth0 is `/portal`, so any login (whether it comes from
@@ -23,7 +24,7 @@ export function Auth0ProviderWithNavigation({ children }: { children: ReactNode 
       cacheLocation="localstorage"
       authorizationParams={{
         // Static export pre-renders this on the server, where there is no window yet.
-        redirect_uri: typeof window === 'undefined' ? undefined : `${window.location.origin}/portal`,
+        redirect_uri: typeof window === 'undefined' ? undefined : `${window.location.origin}${BASE_PATH}/portal`,
         audience: process.env.NEXT_PUBLIC_AUTH0_AUDIENCE,
         // "openid" enables /userinfo, which the API uses to read the athlete's e-mail: the access token
         // of a custom audience does not include it (see CorreoAuth0 in the API).

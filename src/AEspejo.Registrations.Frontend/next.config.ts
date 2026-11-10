@@ -5,10 +5,14 @@
  * brand landing page. Static export ignores `rewrites`, so the API proxy below only applies to
  * `next dev`; in production the frontend calls the API through `NEXT_PUBLIC_API_URL`.
  */
+// Empty by default. The combined Static Web App publishes the panel under /panel with NEXT_PUBLIC_BASE_PATH=/panel.
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+
 const nextConfig: NextConfig = {
   // `next dev` renders dynamic routes on demand, so /register/{slug} and /events/{id} work there without the
   // placeholder rewrite the static export needs.
   output: process.env.NODE_ENV === 'production' ? 'export' : undefined,
+  ...(basePath ? { basePath } : {}),
   trailingSlash: true,
   reactStrictMode: true,
   async rewrites() {
