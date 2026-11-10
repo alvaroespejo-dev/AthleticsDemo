@@ -2,9 +2,7 @@
   "routes": [
     { "route": "/inscripciones/*", "rewrite": "/redirect.html" },
     { "route": "/panel", "rewrite": "/panel/index.html" },
-    { "route": "/panel/", "rewrite": "/panel/index.html" },
     { "route": "/panel/events", "rewrite": "/panel/events/index.html" },
-    { "route": "/panel/events/", "rewrite": "/panel/events/index.html" },
     { "route": "/panel/events/*", "rewrite": "/panel/events/_/index.html" },
     { "route": "/panel/register/*", "rewrite": "/panel/register/_/index.html" }
   ],
