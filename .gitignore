@@ -18,6 +18,8 @@ src/wordpress-AthleticsDemo/wp-content/uploads/
 ## Node / frontend (panel React y landing EcoTrail)
 node_modules/
 dist/
+# Salida del script deploy/static-site/build.sh (sitio combinado para la Static Web App)
+deploy/static-site/site/
 .vite/
 *.local
 

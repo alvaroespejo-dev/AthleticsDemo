@@ -15,11 +15,14 @@ export function LoginPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
 
-  // Demo only: in `next dev` the form starts with the demo account from the environment, so nobody has to type it.
-  // The guard makes the production build drop these values, so they never ship in the bundle.
-  const demo = process.env.NODE_ENV === 'production'
-    ? { loginName: '', password: '' }
-    : { loginName: process.env.NEXT_PUBLIC_DEMO_LOGIN_NAME ?? '', password: process.env.NEXT_PUBLIC_DEMO_LOGIN_PASSWORD ?? '' }
+  // Demo mode is on by default. The form starts with the demo account from the build environment, so the
+  // person opening the demo does not have to type it. Set NEXT_PUBLIC_DEMO_MODE=false at build time for a
+  // production build: the values are then dropped, and they never reach the bundle. These variables are
+  // inlined into the client bundle at build time, so the demo account must have limited permissions.
+  const demoMode = process.env.NEXT_PUBLIC_DEMO_MODE !== 'false'
+  const demo = demoMode
+    ? { loginName: process.env.NEXT_PUBLIC_DEMO_LOGIN_NAME ?? '', password: process.env.NEXT_PUBLIC_DEMO_LOGIN_PASSWORD ?? '' }
+    : { loginName: '', password: '' }
 
   const [loginName, setLoginName] = useState(demo.loginName)
   const [password, setPassword] = useState(demo.password)
