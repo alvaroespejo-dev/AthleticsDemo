@@ -1,9 +1,7 @@
 name: Azure Static Web Apps CI/CD
 
+# Pushes to main are deployed by deploy-azure.yml, only after CI passes. This workflow keeps the PR previews.
 on:
-  push:
-    branches:
-      - main
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
@@ -11,7 +9,7 @@ on:
 
 jobs:
   build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
+    if: github.event_name == 'pull_request' && github.event.action != 'closed'
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:

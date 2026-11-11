@@ -1,0 +1,74 @@
+name: Deploy to Azure
+
+# Every push to main goes through this workflow, and it deploys only after the CI workflow has passed
+# for that same commit (workflow_run with conclusion == success).
+# - API: the jar produced by that CI run is deployed to App Service.
+# - Landing and admin panel: built from that commit and uploaded to Azure Static Web Apps.
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-azure
+  cancel-in-progress: false
+
+jobs:
+  deploy-backend:
+    name: Deploy API to App Service
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' }}
+    runs-on: ubuntu-latest
+    environment: azure-production
+    steps:
+      - name: Download backend jar from the passing CI run
+        uses: actions/download-artifact@v4
+        with:
+          name: backend-jar
+          path: backend-jar
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+
+      - name: Deploy to App Service
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ vars.AZURE_BACKEND_APP_NAME }}
+          publish-profile: ${{ secrets.AZURE_BACKEND_PUBLISH_PROFILE }}
+          package: backend-jar/*.jar
+
+  deploy-site:
+    name: Deploy landing and panel to Static Web Apps
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' }}
+    runs-on: ubuntu-latest
+    environment: azure-production
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Same build as before: landing at the root, admin panel under /panel.
+      - name: Build combined site
+        env:
+          NEXT_PUBLIC_DEMO_MODE: ${{ secrets.NEXT_PUBLIC_DEMO_MODE }}
+          NEXT_PUBLIC_DEMO_LOGIN_NAME: ${{ secrets.NEXT_PUBLIC_DEMO_LOGIN_NAME }}
+          NEXT_PUBLIC_DEMO_LOGIN_PASSWORD: ${{ secrets.NEXT_PUBLIC_DEMO_LOGIN_PASSWORD }}
+        run: bash deploy/static-site/build.sh
+
+      - name: Upload to Static Web App
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_BLACK_ROCK_02336F010 }}
+          action: upload
+          app_location: deploy/static-site/site
+          skip_app_build: true
+          api_location: ""
+          output_location: ""
