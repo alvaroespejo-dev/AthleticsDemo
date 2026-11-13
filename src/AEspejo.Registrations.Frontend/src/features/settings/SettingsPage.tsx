@@ -9,7 +9,8 @@ import type { GarmentType, KitItem, SaveKitItem, SaveSettings, SaveSize, SaveAge
 import { FormDialog } from '@/components/ui/dialog'
 import { EmptyState, ErrorNotice, Loading, InfoNotice, SuccessNotice } from '@/components/ui/states'
 import { Badge, Button, Card, Field, Input, Select, Textarea } from '@/components/ui/primitives'
-import { centsToText, textToCents } from '@/lib/format'
+import { centsToText, textToCents, DEFAULT_CURRENCY } from '@/lib/format'
+import { useCurrencyCode } from '@/lib/currency'
 
 const MAX_AGE = 120
 
@@ -21,6 +22,7 @@ export function SettingsPage() {
   const [message, setMessage] = useState<string | null>(null)
 
   const query = useQuery({ queryKey: ['settings'], queryFn: () => settings.get() })
+  const currency = useCurrencyCode()
 
   // The draft is built once, when the data arrives: mirroring it on every render would overwrite what the user is typing.
   useEffect(() => {
@@ -33,6 +35,7 @@ export function SettingsPage() {
       defaultPaymentToleranceCents: query.data.defaultPaymentToleranceCents,
       serviceFeeCents: query.data.serviceFeeCents,
       moneySportAmountCents: query.data.moneySportAmountCents,
+      currencyCode: query.data.currencyCode ?? DEFAULT_CURRENCY,
     })
   }, [query.data, draft])
 
@@ -109,7 +112,7 @@ export function SettingsPage() {
               />
             </Field>
 
-            <Field id="tolerance" label={t('configuration.paymentTolerance')} hint={t('configuration.paymentToleranceHelp')}>
+            <Field id="tolerance" label={t('configuration.paymentTolerance', { currency })} hint={t('configuration.paymentToleranceHelp')}>
               <Input
                 id="tolerance"
                 inputMode="decimal"
@@ -118,13 +121,24 @@ export function SettingsPage() {
               />
             </Field>
 
-            <Field id="service-fee" label={t('configuration.serviceFee')} hint={t('configuration.serviceFeeHelp')}>
+            <Field id="service-fee" label={t('configuration.serviceFee', { currency })} hint={t('configuration.serviceFeeHelp')}>
               <Input
                 id="service-fee"
                 inputMode="decimal"
                 required
                 value={centsToText(draft.serviceFeeCents)}
                 onChange={(event) => set('serviceFeeCents', textToCents(event.target.value))}
+              />
+            </Field>
+
+            <Field id="currency" label={t('configuration.currency')} hint={t('configuration.currencyHelp')}>
+              <Input
+                id="currency"
+                required
+                maxLength={3}
+                pattern="[A-Z]{3}"
+                value={draft.currencyCode}
+                onChange={(event) => set('currencyCode', event.target.value.toUpperCase())}
               />
             </Field>
 

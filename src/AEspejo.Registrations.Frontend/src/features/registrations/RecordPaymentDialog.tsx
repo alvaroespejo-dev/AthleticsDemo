@@ -1,5 +1,6 @@
 'use client'
 
+import { useCurrencyCode } from '@/lib/currency'
 import { useEffect, useState } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { FileText, Trash2 } from 'lucide-react'
@@ -68,6 +69,7 @@ export function ReceiptPreview({ registrationId }: { registrationId: number }) {
 
 export function RecordPaymentDialog({ registration, onClose, onDone }: Props) {
   const { t, i18n } = useTranslation()
+  const currency = useCurrencyCode()
   const queryClient = useQueryClient()
   const locale = i18n.language
   const collectable = COLLECTABLE.includes(registration.status)
@@ -174,7 +176,7 @@ export function RecordPaymentDialog({ registration, onClose, onDone }: Props) {
         <>
           <InfoNotice>
             <div className="flex justify-between gap-4">
-              <span>{t('operation.amount')}</span>
+              <span>{t('operation.amount', { currency })}</span>
               <strong className="tabular-nums">{formatMoney(registration.amountCents, locale)}</strong>
             </div>
             {registration.totalPaidCents > 0 && (
@@ -196,7 +198,7 @@ export function RecordPaymentDialog({ registration, onClose, onDone }: Props) {
           </Field>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <Field id="payment-amount" label={t('operation.amount')}>
+            <Field id="payment-amount" label={t('operation.amount', { currency })}>
               <Input
                 id="payment-amount"
                 inputMode="decimal"
@@ -330,6 +332,7 @@ function PaymentRow({
   onSaveEdit,
 }: PaymentRowProps) {
   const { t } = useTranslation()
+  const currency = useCurrencyCode()
 
   if (editData) {
     return (
@@ -343,7 +346,7 @@ function PaymentRow({
         </Field>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          <Field id={`edit-amount-${payment.id}`} label={t('operation.amount')}>
+          <Field id={`edit-amount-${payment.id}`} label={t('operation.amount', { currency })}>
             <Input
               id={`edit-amount-${payment.id}`}
               inputMode="decimal"

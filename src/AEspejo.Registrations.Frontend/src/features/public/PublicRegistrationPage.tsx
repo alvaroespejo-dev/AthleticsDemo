@@ -18,7 +18,7 @@ import { applyBrandColor, brandByCode } from '@/lib/brand'
 import { DEFAULT_CALLING_CODE, DEFAULT_COUNTRY, countryDisplayName, OTHER_NATIONALITY } from '@/lib/countries'
 import { DOCUMENT_TYPES } from '@/lib/documents'
 import { withNullsForEmpty } from '@/lib/forms'
-import { formatDate, formatDistance, formatMoney } from '@/lib/format'
+import { formatDate, formatDistance, formatMoney, getCurrencyCode, setCurrencyCode } from '@/lib/format'
 import { cn } from '@/lib/utils'
 import { RegistrationConfirmation } from './RegistrationConfirmation'
 
@@ -131,6 +131,10 @@ export function PublicRegistrationPage() {
   useEffect(() => applyBrandColor(brand), [brand])
 
   const sizes = useQuery({ queryKey: ['public-sizes'], queryFn: () => publicSite.sizes() })
+
+  // Amounts on the public form use the organization currency (USD until the organization changes it).
+  const organization = useQuery({ queryKey: ['public-organization'], queryFn: () => publicSite.organization(), staleTime: 5 * 60_000 })
+  setCurrencyCode(organization.data?.currencyCode)
 
   const signUp = useMutation({
     mutationFn: (body: CreateRegistration) => publicSite.signUp(slug, withNullsForEmpty(body)),
@@ -330,7 +334,7 @@ export function PublicRegistrationPage() {
 
     // When the value was reduced, say so: the athlete should know why the amount is not the one typed.
     if (typed > validated) {
-      setMoneySportMessage(t('validation.moneySportReduced', { from: (typed / 100).toFixed(2), to: (validated / 100).toFixed(2) }))
+      setMoneySportMessage(t('validation.moneySportReduced', { from: (typed / 100).toFixed(2), to: (validated / 100).toFixed(2), currency: getCurrencyCode() }))
       if (messageTimer.current) clearTimeout(messageTimer.current)
       messageTimer.current = setTimeout(() => setMoneySportMessage(null), 5000)
     }

@@ -121,7 +121,7 @@ public class PublicEventService {
                             event.getRegistrationClosesAt(),
                             open,
                             open ? null : closedReason(event, now),
-                            event.getImagePath() != null && !event.getImagePath().isBlank());
+                            true); // Every event has a cover: its own or the default image.
                 })
                 .toList();
     }
@@ -155,7 +155,7 @@ public class PublicEventService {
                 closedReason,
                 event.getWaiverText(),
                 event.getReservationHours(),
-                event.getImagePath() != null && !event.getImagePath().isBlank(),
+                true, // Every event has a cover: its own or the default image.
                 event.getRunnerManualPath() != null && !event.getRunnerManualPath().isBlank(),
                 event.getRunnerManualName(),
                 modalities);

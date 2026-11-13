@@ -32,6 +32,9 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class MediaService {
 
+    /** Classpath image used as the cover of events without their own. */
+    private static final String DEFAULT_EVENT_IMAGE = "/media/default-event.jpg";
+
     /** A file ready to be sent: its bytes, content type and the name to offer when downloaded. */
     public record FileContent(byte[] bytes, String contentType, String fileName) {
     }
@@ -75,9 +78,22 @@ public class MediaService {
         event.setImagePath(null);
     }
 
+    /** Cover of the event, or the bundled default image when the event has none. */
     public FileContent eventImage(String slug) {
         Event event = findEventBySlug(slug);
+        if (event.getImagePath() == null || event.getImagePath().isBlank()) {
+            return defaultEventImage(slug);
+        }
         return load(event.getImagePath(), "media.image", "evento-" + slug + ".jpg");
+    }
+
+    private FileContent defaultEventImage(String slug) {
+        try (var in = getClass().getResourceAsStream(DEFAULT_EVENT_IMAGE)) {
+            if (in == null) throw new NotFoundException("media.image", "evento-" + slug + ".jpg");
+            return new FileContent(in.readAllBytes(), "image/jpeg", "evento-" + slug + ".jpg");
+        } catch (java.io.IOException e) {
+            throw new java.io.UncheckedIOException(e);
+        }
     }
 
     // ---- Runner manual ----

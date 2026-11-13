@@ -39,6 +39,9 @@ public class SystemSettings implements Auditable {
     /** Money Sport credit per finished event, in cents. Default is USD 40. */
     private int moneySportAmountCents = 4000;
 
+    /** ISO 4217 code shown next to every amount in the panel and the public site. */
+    private String currencyCode = "USD";
+
     /** Open-amount QR code used to charge the remaining balance when the athlete pays with virtual money. */
     private String genericQrPath;
 

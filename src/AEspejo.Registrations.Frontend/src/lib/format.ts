@@ -2,10 +2,23 @@
  * Amounts travel as integers in cents so floating-point errors never creep in. The division by 100
  * happens only here, at display time.
  */
+export const DEFAULT_CURRENCY = 'USD'
+
+let currencyCode = DEFAULT_CURRENCY
+
+/** Currency used by formatMoney. The panel sets it from the organization settings (see useCurrencyCode). */
+export function setCurrencyCode(code: string | null | undefined) {
+  currencyCode = code && /^[A-Z]{3}$/.test(code) ? code : DEFAULT_CURRENCY
+}
+
+export function getCurrencyCode(): string {
+  return currencyCode
+}
+
 export function formatMoney(cents: number, locale = 'en-US'): string {
   return new Intl.NumberFormat(locale, {
     style: 'currency',
-    currency: 'USD',
+    currency: currencyCode,
     currencyDisplay: 'code',
     minimumFractionDigits: 2,
   }).format(cents / 100)

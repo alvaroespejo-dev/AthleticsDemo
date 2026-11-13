@@ -387,6 +387,9 @@ export const genericQr = {
 export const publicSite = {
   event: (slug: string) => api.get<PublicEvent>(`/public/events/${slug}`),
 
+  /** Organization name and currency code: the only settings the public site may read. */
+  organization: () => api.get<{ organizationName: string | null; currencyCode: string }>('/public/organization'),
+
   /** Athletes with that document number, so the form can be pre-filled. The slug is optional: the portal searches without an event. */
   findAthletes: (documentNumber: string, slug?: string) =>
     api.get<FoundAthlete[]>(`/public/athletes?${toQuery({ documentNumber, slug })}`),

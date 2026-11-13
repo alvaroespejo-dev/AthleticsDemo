@@ -8,6 +8,7 @@ import type { ParticipationResult } from '@/api/types'
 import { FormDialog } from '@/components/ui/dialog'
 import { ErrorNotice, InfoNotice } from '@/components/ui/states'
 import { Field, Input, Select, Textarea } from '@/components/ui/primitives'
+import { getCurrencyCode } from '@/lib/format'
 import { formatMoney } from '@/lib/format'
 
 /**
@@ -220,7 +221,7 @@ export function ResultDialog({ registrationId, athleteName, modality, currentRes
 
       {result === 'Finished' && (
         <div className="rounded border border-green-200 bg-green-50 p-3 text-sm text-green-700">
-          {t('resultado.finishedBonus', { monto: creditText })}
+          {t('resultado.finishedBonus', { monto: creditText, currency: getCurrencyCode() })}
         </div>
       )}
 

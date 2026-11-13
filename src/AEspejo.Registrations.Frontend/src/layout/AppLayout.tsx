@@ -1,5 +1,6 @@
 'use client'
 
+import { useCurrencyCode } from '@/lib/currency'
 import { useState, type ReactNode } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -13,6 +14,7 @@ import { cn } from '@/lib/utils'
 import { NAV_GROUPS, NAVIGATION } from './navigation'
 
 export function AppLayout({ children }: { children: ReactNode }) {
+  useCurrencyCode()
   const { user, signOut } = useAuth()
   const { t } = useTranslation()
   const pathname = usePathname()

@@ -1,3 +1,4 @@
+import { DEFAULT_CURRENCY } from '@/lib/format'
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import es from './locales/es.json'
@@ -148,7 +149,7 @@ i18n.use(initReactI18next).init({
   resources: RESOURCES,
   lng: 'en',
   fallbackLng: 'en',
-  interpolation: { escapeValue: false },
+  interpolation: { escapeValue: false, defaultVariables: { currency: DEFAULT_CURRENCY } },
 })
 
 /** Applies the language saved in the browser. Client-only: it reads `localStorage`. */

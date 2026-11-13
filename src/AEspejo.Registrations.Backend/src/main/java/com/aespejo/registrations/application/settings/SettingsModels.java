@@ -3,6 +3,7 @@ package com.aespejo.registrations.application.settings;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import java.time.OffsetDateTime;
 
@@ -20,6 +21,7 @@ public final class SettingsModels {
             int defaultPaymentToleranceCents,
             int serviceFeeCents,
             int moneySportAmountCents,
+            String currencyCode,
             OffsetDateTime updatedAt) {
     }
 
@@ -34,11 +36,12 @@ public final class SettingsModels {
             @NotNull @Min(value = 0, message = "settings.serviceFee.range")
             @Max(value = 10000, message = "settings.serviceFee.range") Integer serviceFeeCents,
             @NotNull @Min(value = 0, message = "settings.moneySport.range")
-            @Max(value = 100000, message = "settings.moneySport.range") Integer moneySportAmountCents) {
+            @Max(value = 100000, message = "settings.moneySport.range") Integer moneySportAmountCents,
+            @NotNull @Pattern(regexp = "[A-Z]{3}", message = "settings.currency.invalid") String currencyCode) {
     }
 
     /** The only settings the public site may see: the organization name. */
-    public record PublicOrganization(String organizationName) {
+    public record PublicOrganization(String organizationName, String currencyCode) {
     }
 
     /** The default waiver text offered when the settings have none. */

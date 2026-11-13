@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class SettingsService {
 
     private static final int ROW_ID = 1;
+    private static final String DEFAULT_CURRENCY = "USD";
 
     private final SettingsRepository settings;
     private final MessageSource messages;
@@ -42,6 +43,7 @@ public class SettingsService {
         row.setDefaultPaymentToleranceCents(request.defaultPaymentToleranceCents());
         row.setServiceFeeCents(request.serviceFeeCents());
         row.setMoneySportAmountCents(request.moneySportAmountCents());
+        row.setCurrencyCode(request.currencyCode());
         row.setUpdatedAt(OffsetDateTime.now());
         return view(row);
     }
@@ -49,8 +51,8 @@ public class SettingsService {
     @Transactional(readOnly = true)
     public PublicOrganization publicOrganization() {
         return settings.findById(ROW_ID)
-                .map(s -> new PublicOrganization(s.getOrganizationName()))
-                .orElse(new PublicOrganization(null));
+                .map(s -> new PublicOrganization(s.getOrganizationName(), s.getCurrencyCode()))
+                .orElse(new PublicOrganization(null, DEFAULT_CURRENCY));
     }
 
     /** The starting waiver text. It is a reasonable draft, not legal advice: a lawyer should review it before the first event. */
@@ -75,6 +77,7 @@ public class SettingsService {
                 s.getDefaultPaymentToleranceCents(),
                 s.getServiceFeeCents(),
                 s.getMoneySportAmountCents(),
+                s.getCurrencyCode(),
                 s.getUpdatedAt());
     }
 

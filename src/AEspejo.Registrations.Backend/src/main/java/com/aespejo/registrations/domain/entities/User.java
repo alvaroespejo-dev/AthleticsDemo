@@ -30,7 +30,7 @@ public class User {
 
     private UserRole role = UserRole.ReadOnly;
 
-    private String preferredLanguage = "es";
+    private String preferredLanguage = "en";
 
     private boolean active = true;
 

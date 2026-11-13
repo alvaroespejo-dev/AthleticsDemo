@@ -1031,6 +1031,7 @@ export interface SettingsView {
   defaultPaymentToleranceCents: number
   serviceFeeCents: number
   moneySportAmountCents: number
+  currencyCode: string
   updatedAt: string
 }
 
@@ -1041,6 +1042,7 @@ export interface SaveSettings {
   defaultPaymentToleranceCents: number
   serviceFeeCents: number
   moneySportAmountCents: number
+  currencyCode: string
 }
 
 // ---- Problem responses (common/exception/ApiExceptionHandler.java) ----

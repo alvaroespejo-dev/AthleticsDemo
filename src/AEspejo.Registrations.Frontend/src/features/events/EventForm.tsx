@@ -1,5 +1,6 @@
 'use client'
 
+import { useCurrencyCode } from '@/lib/currency'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { brands } from '@/api/endpoints'
@@ -50,6 +51,7 @@ export function eventToForm(event: EventDetail): SaveEvent {
 
 export function EventForm({ value, onChange }: Props) {
   const { t } = useTranslation()
+  const currency = useCurrencyCode()
   const set = <K extends keyof SaveEvent>(field: K, next: SaveEvent[K]) => onChange({ ...value, [field]: next })
 
   // The brand catalogue changes with a deployment, not on the fly.
@@ -141,7 +143,7 @@ export function EventForm({ value, onChange }: Props) {
           />
         </Field>
 
-        <Field id="paymentTolerance" label={t('operation.paymentTolerance')} hint={t('eventForm.toleranceHelp')}>
+        <Field id="paymentTolerance" label={t('operation.paymentTolerance', { currency })} hint={t('eventForm.toleranceHelp')}>
           <Input
             id="paymentTolerance"
             inputMode="decimal"
