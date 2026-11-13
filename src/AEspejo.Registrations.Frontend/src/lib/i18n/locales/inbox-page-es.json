@@ -1,0 +1,14 @@
+{
+    "inboxPage":  {
+                      "athleteFile":  "ficha del atleta",
+                      "minutesLeft":  "quedan {{time}}",
+                      "minutes":  "{{count}} min",
+                      "hours":  "{{count}} h",
+                      "hoursMinutes":  "{{hours}} h {{minutes}} min",
+                      "approvedTemplate":  "Plantilla aprobada en Meta",
+                      "chooseTemplate":  "Elegí una plantilla…",
+                      "noTemplates":  "La cuenta no tiene ninguna plantilla aprobada todavía.",
+                      "parameter":  "Parámetro {{number}}",
+                      "policyNotice":  "Meta solo permite retomar el contacto fuera de la ventana de 24 horas con una plantilla aprobada. Al entregarse, el cliente vuelve a poder contestar con texto libre."
+                  }
+}

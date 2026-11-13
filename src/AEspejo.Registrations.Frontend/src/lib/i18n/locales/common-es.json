@@ -1,0 +1,12 @@
+﻿{
+    "common":  {
+                   "cancel":  "Cancelar",
+                   "save":  "Guardar",
+                   "saving":  "Guardando…",
+                   "close":  "Cerrar",
+                   "loading":  "Cargando…",
+                   "unexpectedError":  "Ocurrió un error inesperado.",
+                   "noAccessTitle":  "Sin acceso a esta sección",
+                   "noAccessMessage":  "Su rol ({{role}}) no tiene permiso para ver este contenido."
+               }
+}

@@ -1,0 +1,23 @@
+{
+  "portal": {
+    "profile": "Mi Perfil",
+    "profileDescription": "Administra tus datos y consulta tu historial deportivo.",
+    "back": "Volver a {{brand}}",
+    "athlete": "Atleta",
+    "participatedEvents": "Eventos participados",
+    "totalKilometers": "Kilómetros acumulados",
+    "myData": "Mis datos",
+    "personalData": "Datos personales",
+    "emergency": "Contacto de emergencia",
+    "clinical": "Datos clínicos",
+    "communications": "Comunicaciones",
+    "myEvents": "Mis eventos",
+    "completeProfile": "Completa tu perfil",
+    "signOut": "Salir",
+    "found": "Atletas encontrados",
+    "notFound": "No encontramos a nadie con ese documento. Completa el formulario con tus datos.",
+    "useData": "Usar estos datos",
+    "linkAccount": "Vincular mi cuenta",
+    "createProfile": "Crear mi perfil"
+  }
+}

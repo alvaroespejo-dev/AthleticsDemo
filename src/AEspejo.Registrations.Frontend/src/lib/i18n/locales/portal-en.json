@@ -1,0 +1,23 @@
+{
+  "portal": {
+    "profile": "My Profile",
+    "profileDescription": "Manage your details and view your sports history.",
+    "back": "Back to {{brand}}",
+    "athlete": "Athlete",
+    "participatedEvents": "Participated events",
+    "totalKilometers": "Total kilometers",
+    "myData": "My details",
+    "personalData": "Personal details",
+    "emergency": "Emergency contact",
+    "clinical": "Medical details",
+    "communications": "Communications",
+    "myEvents": "My events",
+    "completeProfile": "Complete your profile",
+    "signOut": "Sign out",
+    "found": "Athletes found",
+    "notFound": "No one was found with that document. Complete the form with your details.",
+    "useData": "Use these details",
+    "linkAccount": "Link my account",
+    "createProfile": "Create my profile"
+  }
+}

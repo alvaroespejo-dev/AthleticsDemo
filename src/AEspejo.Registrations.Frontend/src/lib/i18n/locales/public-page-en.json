@@ -1,0 +1,28 @@
+{
+  "publicPage": {
+    "kit": "Kit",
+    "size": "Size",
+    "qrAlt": "QR code to pay the registration",
+    "scanQr": "Scan this code with your banking app.",
+    "downloadQr": "Download QR",
+    "reservedNotice": "Your spot is reserved for {{hours}} hours. If we do not record the payment before then, it is released for another athlete.",
+    "openedBetween": "Registrations were open from {{from}} to {{to}}.",
+    "available": "Available: {{amount}}",
+    "alreadyRegistered": "{{name}} already has a valid registration for this event.",
+    "documentLine": "Document: {{document}} · {{type}} · {{nationality}} · Area code: +{{code}} · Phone: {{phone}}",
+    "balance": "Balance",
+    "documentTypes": {
+      "Ci": "CI",
+      "Dni": "DNI",
+      "Passport": "Passport",
+      "ForeignerId": "Foreigner ID",
+      "Rut": "RUT",
+      "Cpf": "CPF",
+      "Other": "Other"
+    },
+    "garmentTypes": {
+      "TShirt": "T-shirt",
+      "Singlet": "Singlet"
+    }
+  }
+}

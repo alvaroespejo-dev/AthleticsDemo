@@ -1,0 +1,19 @@
+{
+    "athletesPage":  {
+                         "saved":  "Atleta actualizado.",
+                         "documentType":  "Tipo de documento",
+                         "documentNumber":  "Número de documento",
+                         "firstNames":  "Nombres",
+                         "lastNames":  "Apellidos",
+                         "birthDate":  "Fecha de nacimiento",
+                         "phoneCountryCode":  "Código de país",
+                         "nationality":  "Nacionalidad (código de 2 letras)",
+                         "emergencyName":  "Contacto de emergencia",
+                         "emergencyPhone":  "Teléfono de emergencia",
+                         "bloodType":  "Grupo sanguíneo",
+                         "allergies":  "Alergias",
+                         "linkedAccounts":  "Cuentas vinculadas",
+                         "noLinkedAccounts":  "Sin cuentas vinculadas.",
+                         "unlink":  "Desvincular"
+                     }
+}

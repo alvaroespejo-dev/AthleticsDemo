@@ -1,0 +1,189 @@
+/* Capa de movimiento e imágenes de la portada. Se carga después de styles.css y solo agrega o
+   sobrescribe reglas; el contenido sigue visible si el script no corre (clase `js` en <html>). */
+
+/* Portada con foto de fondo y zoom lento */
+.hero { min-height: 760px; isolation: isolate; }
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  transform-origin: center;
+  animation: kenburns 24s ease-out both;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(13, 15, 18, 0.92) 0%, rgba(13, 15, 18, 0.55) 55%, rgba(13, 15, 18, 0.2) 100%),
+    linear-gradient(0deg, rgba(13, 15, 18, 0.8), transparent 40%);
+}
+@keyframes kenburns {
+  from { transform: scale(1.12); }
+  to { transform: scale(1); }
+}
+
+/* Entrada de textos de la portada y revelado al hacer scroll */
+.js .reveal-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.js .reveal-up.is-visible { opacity: 1; transform: none; }
+.js .hero .reveal-up:nth-child(1) { transition-delay: 0.1s; }
+.js .hero .reveal-up:nth-child(2) { transition-delay: 0.25s; }
+.js .hero .reveal-up:nth-child(3) { transition-delay: 0.4s; }
+.js .hero .reveal-up:nth-child(4) { transition-delay: 0.55s; }
+.js .distance-grid .reveal-up:nth-child(2) { transition-delay: 0.12s; }
+.js .distance-grid .reveal-up:nth-child(3) { transition-delay: 0.24s; }
+.js .steps .reveal-up:nth-child(2) { transition-delay: 0.12s; }
+.js .steps .reveal-up:nth-child(3) { transition-delay: 0.24s; }
+
+/* Tarjetas de distancia con elevación al pasar el cursor */
+.distance-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.distance-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(13, 15, 18, 0.18); }
+.distance-card-accent:hover { box-shadow: 0 18px 40px rgba(255, 90, 31, 0.28); }
+.distance-card h3 { transition: color 0.3s ease; }
+.distance-card:hover h3 { color: var(--signal); }
+.distance-card-accent:hover h3 { color: var(--chalk); }
+
+/* Trazado animado en la portada */
+.route-art path {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: draw-route 2.6s ease-out 0.4s forwards;
+}
+.route-art circle { opacity: 0; animation: fade-in 0.6s ease 2.6s forwards; }
+@keyframes draw-route { to { stroke-dashoffset: 0; } }
+@keyframes fade-in { to { opacity: 1; } }
+
+/* Indicador de scroll */
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 46px;
+  border: 2px solid rgba(242, 239, 232, 0.6);
+  border-radius: 13px;
+  display: block;
+  z-index: 1;
+}
+.scroll-line {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  background: var(--signal);
+  border-radius: 2px;
+  animation: scroll-dot 1.8s ease-in-out infinite;
+}
+@keyframes scroll-dot {
+  0% { transform: translateY(0); opacity: 1; }
+  80% { transform: translateY(16px); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Franja que se desplaza con las distancias y los servicios */
+.marquee {
+  overflow: hidden;
+  background: var(--signal);
+  color: var(--asphalt);
+  border-top: 1px solid rgba(13, 15, 18, 0.2);
+  border-bottom: 1px solid rgba(13, 15, 18, 0.2);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 28px;
+  padding: 18px 0;
+  font-family: var(--display);
+  font-size: 28px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  animation: marquee 28s linear infinite;
+}
+.marquee-track i { font-style: normal; font-size: 18px; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Banda con foto a ancho completo */
+.photo-band {
+  position: relative;
+  height: 460px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.photo-band-img {
+  position: absolute;
+  inset: -10% 0;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  will-change: transform;
+  animation: band-drift 18s ease-in-out infinite alternate;
+}
+@keyframes band-drift {
+  from { transform: translateY(-4%); }
+  to { transform: translateY(4%); }
+}
+.photo-band::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(13, 15, 18, 0.85), rgba(13, 15, 18, 0.1) 60%);
+}
+.photo-band-caption {
+  position: relative;
+  z-index: 1;
+  padding: 0 32px 40px;
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+  color: var(--chalk);
+}
+.photo-band-caption p {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(32px, 5vw, 60px);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Logo en la cabecera */
+.brand { display: inline-flex; align-items: center; gap: 12px; }
+.brand::before { content: none; }
+.brand-logo { height: 40px; width: auto; object-fit: contain; }
+
+/* Pie: crédito de las fotos */
+.footer-bottom { flex-wrap: wrap; }
+
+/* Respeto a quien pide menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .js .reveal-up { opacity: 1; transform: none; }
+}
+
+@media (max-width: 800px) {
+  .hero { min-height: 640px; }
+  .photo-band { height: 340px; }
+  .marquee-track { font-size: 22px; }
+}

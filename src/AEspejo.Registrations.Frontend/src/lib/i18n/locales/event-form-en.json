@@ -1,0 +1,18 @@
+{
+  "eventForm": {
+    "brandHelp": "The brand decides which landing page the event appears on.",
+    "nameHelp": "The public address is derived from the name unless another one is given.",
+    "sizeChangeHelp": "Until when the athlete can change their size on their own. Shirt production needs the cut before registrations close.",
+    "reservationHelp": "How long the spot is held for someone who has not paid yet, before it is released.",
+    "toleranceHelp": "How much less than the price is still accepted. At 0 the exact amount is required.",
+    "liabilityHelp": "The athlete accepts it when registering, and it is stored with the date and IP. The event cannot be published without this text.",
+    "published": "The event is published and now accepts registrations.",
+    "status": {
+      "Draft": "Draft",
+      "Published": "Published",
+      "Closed": "Closed",
+      "Finished": "Finished",
+      "Cancelled": "Cancelled"
+    }
+  }
+}

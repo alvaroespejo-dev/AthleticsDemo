@@ -1,0 +1,18 @@
+{
+    "settingsPage":  {
+                         "garment":  {
+                                         "TShirt":  "T-shirt",
+                                         "Singlet":  "Singlet"
+                                     },
+                         "rowEdit":  "Edit {{name}}",
+                         "rowDelete":  "Delete {{name}}",
+                         "examples":  {
+                                          "size":  "M",
+                                          "item":  "Official shirt",
+                                          "category":  "Master A"
+                                      },
+                         "categoryHelp":  "Age is evaluated on the event day, not on the registration day. Two ranges cannot cover the same age: the athlete would fall into both and the awards would be ambiguous.",
+                         "moneySportAmount":  "Athlete Portal credit per finished race",
+                         "moneySportAmountHelp":  "Credited to the athlete when their result is set to Finished."
+                     }
+}

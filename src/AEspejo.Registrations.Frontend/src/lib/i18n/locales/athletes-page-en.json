@@ -1,0 +1,19 @@
+{
+    "athletesPage":  {
+                         "saved":  "Athlete updated.",
+                         "documentType":  "Document type",
+                         "documentNumber":  "Document number",
+                         "firstNames":  "First names",
+                         "lastNames":  "Last names",
+                         "birthDate":  "Date of birth",
+                         "phoneCountryCode":  "Country code",
+                         "nationality":  "Nationality (2-letter code)",
+                         "emergencyName":  "Emergency contact",
+                         "emergencyPhone":  "Emergency phone",
+                         "bloodType":  "Blood type",
+                         "allergies":  "Allergies",
+                         "linkedAccounts":  "Linked accounts",
+                         "noLinkedAccounts":  "No linked accounts.",
+                         "unlink":  "Unlink"
+                     }
+}

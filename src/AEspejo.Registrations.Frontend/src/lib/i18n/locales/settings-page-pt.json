@@ -1,0 +1,18 @@
+{
+    "settingsPage":  {
+                         "garment":  {
+                                         "TShirt":  "Camiseta",
+                                         "Singlet":  "Regata"
+                                     },
+                         "rowEdit":  "Editar {{name}}",
+                         "rowDelete":  "Excluir {{name}}",
+                         "examples":  {
+                                          "size":  "M",
+                                          "item":  "Camiseta oficial",
+                                          "category":  "Master A"
+                                      },
+                         "categoryHelp":  "A idade é avaliada no dia do evento, não no dia da inscrição. Duas faixas não podem cobrir a mesma idade: o atleta cairia nas duas e a premiação ficaria ambígua.",
+                         "moneySportAmount":  "Crédito Athlete Portal por corrida concluída",
+                         "moneySportAmountHelp":  "Creditado ao atleta quando o resultado fica como Finalizado."
+                     }
+}

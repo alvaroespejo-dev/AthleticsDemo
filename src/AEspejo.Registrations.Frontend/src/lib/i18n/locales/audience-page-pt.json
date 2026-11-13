@@ -1,0 +1,28 @@
+{
+  "audiencePage": {
+    "fields": {
+      "City": "Cidade",
+      "Club": "Clube",
+      "Nationality": "Nacionalidade",
+      "Sex": "Sexo",
+      "Age": "Idade",
+      "Participated": "Participou",
+      "LastRaceYear": "Última corrida (ano)",
+      "EventsParticipated": "Eventos disputados",
+      "HasEmail": "Tem e-mail"
+    },
+    "contains": "contém",
+    "race": "Corrida",
+    "segment": "Segmento",
+    "sharedNotice": "Serão enviadas {{whatsapp}} mensagens: {{shared}} {{sharedLabel}} {{note}}",
+    "raceLabel": "Corrida",
+    "segmentLabel": "Segmento",
+    "emptyTitle": "A audiência está vazia",
+    "emptyMessage": "Ninguém atende ao critério, ou quem atende não deu consentimento de marketing.",
+    "sendTo": "Enviar para {{name}}",
+    "segmentCriteriaNote": "Salva-se o critério, não a lista de pessoas: na próxima vez que for usado, também alcançará quem se inscreveu a partir de hoje.",
+    "segmentNamePlaceholder": "Mulheres de Santa Cruz que correram em 2025",
+    "descriptionOptional": "Descrição (opcional)",
+    "nameLabel": "Nome"
+  }
+}

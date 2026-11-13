@@ -1,0 +1,17 @@
+{
+  "registrants": {
+    "description": "Participant list and payment status.",
+    "collect": "Collect",
+    "collectRevert": "Collect / Revert",
+    "roleCollect": "Your role does not allow registering payments",
+    "notCollectable": "Inscription {{estado}}: does not accept payments",
+    "roleBib": "Your role does not allow assigning bibs",
+    "noBib": "Does not wear a bib in {{estado}} status",
+    "roleReactivate": "Only administrators can reactivate",
+    "onlyExpiredOrCanceled": "Only expired or canceled inscriptions can be reactivated",
+    "roleCancel": "Only administrators can cancel",
+    "revertPaymentFirst": "Has credited payments: reverse them first",
+    "cantCancel": "Cannot cancel {{estado}} inscription",
+    "batchHelp": "The result will be applied to {{count}} selected registrations."
+  }
+}

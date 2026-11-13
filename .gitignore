@@ -1,0 +1,34 @@
+## Java / Maven (backend Spring Boot)
+target/
+*.class
+.idea/
+*.iml
+
+## Archivos subidos por los atletas (comprobantes de pago) y ruta base de archivos
+App_Data/
+Uploads/
+
+## WordPress (AthleticsDemo): database credentials and uploaded files
+src/wordpress-AthleticsDemo/wp-config.php
+src/wordpress-AthleticsDemo/wp-content/uploads/
+
+## Logs de desarrollo
+*.log
+
+## Node / frontend (panel React y landing EcoTrail)
+node_modules/
+dist/
+# Salida del script deploy/static-site/build.sh (sitio combinado para la Static Web App)
+deploy/static-site/site/
+.vite/
+*.local
+
+## Entorno
+.env
+.env.*
+!.env.example
+# Alimenta el build de la landing en CI, donde .env.local no existe. Solo valores publicos.
+!.env.production
+# El panel React se compila una vez por marca (build:ecotrail / build:onesport).
+!.env.ecotrail
+!.env.onesport

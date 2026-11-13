@@ -1,0 +1,22 @@
+{
+  "athletes": {
+    "description": "A unified participant directory across all events. One row per person.",
+    "search": "Search",
+    "searchPlaceholder": "Document, name, surname, phone, or email"
+  },
+  "registrants": {
+    "description": "Participant list and payment status.",
+    "empty": "There are no events yet",
+    "emptyMessage": "Create an event and publish its form to start receiving registrants."
+  },
+  "reports": {
+    "title": "Master report",
+    "description": "Registrants, revenue, categories, and shirts in one query.",
+    "generating": "Generating master report…"
+  },
+  "campaigns": {
+    "description": "Bulk messages through Meta's official API, with status per recipient.",
+    "empty": "There are no campaigns yet",
+    "emptyMessage": "Build an audience in “Find participants” and send your first promotion from there."
+  }
+}

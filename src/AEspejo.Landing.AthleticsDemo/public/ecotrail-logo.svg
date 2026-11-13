@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-labelledby="title desc">
+  <title id="title">ECOTRAIL Bolivia</title>
+  <desc id="desc">Logotipo circular de ECOTRAIL Bolivia</desc>
+  <defs>
+    <radialGradient id="bg" cx="72%" cy="38%" r="82%"><stop offset="0" stop-color="#b6bd32"/><stop offset=".42" stop-color="#687d13"/><stop offset="1" stop-color="#0b170f"/></radialGradient>
+    <clipPath id="logo-circle"><circle cx="250" cy="250" r="242"/></clipPath>
+  </defs>
+  <circle cx="250" cy="250" r="246" fill="url(#bg)" stroke="#fff" stroke-width="8"/>
+  <g clip-path="url(#logo-circle)">
+    <path d="M14 338c80-36 114-128 145-238 35 84 63 154 108 190 29-32 52-72 82-139 19 47 58 73 137 114v178H14z" fill="#142514" opacity=".86"/>
+    <path d="M285 151c48 17 84 52 119 100-39-17-77-20-111-10 20-27 17-58-8-90z" fill="#8bc72c" opacity=".95"/>
+    <text x="250" y="244" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="66" font-weight="800" letter-spacing="-3">ECOTRAIL</text>
+    <text x="369" y="287" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="26" font-weight="700">Bolivia</text>
+    <text x="250" y="337" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="17" letter-spacing="1">Especialistas en Turismo Deportivo y Eventos</text>
+  </g>
+</svg>

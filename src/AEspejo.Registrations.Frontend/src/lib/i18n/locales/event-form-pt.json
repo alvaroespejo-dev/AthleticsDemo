@@ -1,0 +1,18 @@
+{
+  "eventForm": {
+    "brandHelp": "A marca define em qual landing page o evento aparece.",
+    "nameHelp": "O endereço público é derivado do nome, salvo se outro for informado.",
+    "sizeChangeHelp": "Até quando o atleta pode trocar o tamanho sozinho. A produção das camisetas precisa do corte antes do fechamento das inscrições.",
+    "reservationHelp": "Por quanto tempo a vaga fica reservada para quem ainda não pagou, antes de ser liberada.",
+    "toleranceHelp": "Diferença a menos que é aceita. Com 0, exige-se o valor exato.",
+    "liabilityHelp": "O atleta aceita ao se inscrever, e fica salvo com a data e o IP. Sem este texto o evento não pode ser publicado.",
+    "published": "O evento foi publicado e já aceita inscrições.",
+    "status": {
+      "Draft": "Rascunho",
+      "Published": "Publicado",
+      "Closed": "Encerrado",
+      "Finished": "Finalizado",
+      "Cancelled": "Cancelado"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "publicPage": {
+    "kit": "Kit",
+    "size": "Tamanho",
+    "qrAlt": "Código QR para pagar a inscrição",
+    "scanQr": "Escaneie este código com o seu aplicativo bancário.",
+    "downloadQr": "Baixar QR",
+    "reservedNotice": "Sua vaga fica reservada por {{hours}} horas. Se não registrarmos o pagamento antes, ela é liberada para outro atleta.",
+    "openedBetween": "As inscrições estiveram abertas de {{from}} a {{to}}.",
+    "available": "Disponível: {{amount}}",
+    "alreadyRegistered": "{{name}} já tem uma inscrição válida para este evento.",
+    "documentLine": "Documento: {{document}} · {{type}} · {{nationality}} · Código de área: +{{code}} · Telefone: {{phone}}",
+    "balance": "Saldo",
+    "documentTypes": {
+      "Ci": "CI",
+      "Dni": "DNI",
+      "Passport": "Passaporte",
+      "ForeignerId": "Carteira de estrangeiro",
+      "Rut": "RUT",
+      "Cpf": "CPF",
+      "Other": "Outro"
+    },
+    "garmentTypes": {
+      "TShirt": "Camiseta",
+      "Singlet": "Regata"
+    }
+  }
+}

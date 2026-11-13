@@ -1,0 +1,27 @@
+{
+    "eventSections":  {
+                          "ageCategories":  {
+                                                "emptyMessage":  "Without categories, every registrant is left unclassified and the award report is useless.",
+                                                "namePlaceholder":  "Master A",
+                                                "maxAge":  "Maximum age",
+                                                "scope":  "Scope",
+                                                "scopeHelp":  "Two categories of the same sex and scope cannot cover the same age: the athlete would fall into both and the awards would be ambiguous.",
+                                                "allModalities":  "All modalities",
+                                                "onlyModality":  "Only {{name}}",
+                                                "sex":  "Sex",
+                                                "newCategory":  "New category",
+                                                "recalculated":  "Categories recalculated: {{count}} registrations updated.",
+                                                "deleteRow":  "Delete {{name}}"
+                                            },
+                          "image":  {
+                                        "alt":  "Image of {{name}}",
+                                        "delete":  "Delete image"
+                                    },
+                          "manual":  {
+                                         "delete":  "Delete runner guide"
+                                     },
+                          "notice":  {
+                                         "published":  "The event is published and now accepts registrations."
+                                     }
+                      }
+}

@@ -1,0 +1,12 @@
+﻿{
+    "common":  {
+                   "cancel":  "Cancel",
+                   "save":  "Save",
+                   "saving":  "Saving…",
+                   "close":  "Close",
+                   "loading":  "Loading…",
+                   "unexpectedError":  "An unexpected error occurred.",
+                   "noAccessTitle":  "No access to this section",
+                   "noAccessMessage":  "Your role ({{role}}) is not allowed to view this content."
+               }
+}

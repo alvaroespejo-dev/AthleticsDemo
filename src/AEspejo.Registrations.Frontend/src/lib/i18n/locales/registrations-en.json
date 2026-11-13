@@ -1,0 +1,67 @@
+{
+    "registrations":  {
+                          "result":  {
+                                         "Finished":  "✓ Finished",
+                                         "Dropped":  "⊘ Dropped out",
+                                         "NoShow":  "✗ No-show"
+                                     },
+                          "writeTo":  "Message {{name}} on WhatsApp",
+                          "transactionHelp":  "The one printed on the bank receipt. It cannot be repeated anywhere in the system: that is what prevents crediting the same deposit twice.",
+                          "payerHelp":  "Whoever is named as the holder of the transfer.",
+                          "missingNotice":  "With this amount {{amount}} would still be missing: the registration will be left under review.",
+                          "surplusNotice":  "{{amount}} would be paid in excess, recorded as a credit balance.",
+                          "reasonHelp":  "It is kept in the notes of the registration.",
+                          "cancelHelp":  "The registration stops counting and its place becomes available again. The athlete can register again for the event.",
+                          "reactivateHelp":  "It becomes pending again with a new reservation window. Since expiring or cancelling had released its place, the system checks that the modality still has room and that the athlete has not registered again: if either check fails, the operation is refused.",
+                          "bibHelp":  "Leaving it empty removes the assigned bib. It cannot repeat within the event.",
+                          "bibOutOfRange":  "Bib {{bib}} is outside the range {{from}}–{{to}} of {{modality}}. It can be saved anyway, but it is worth checking.",
+                          "waiverAccepted":  "Accepted on {{date}}",
+                          "waiverIp":  " from {{ip}}",
+                          "unsubscribed":  "Unsubscribed on {{date}}",
+                          "optIn":  "Authorized",
+                          "optInDate":  " on {{date}}",
+                          "noOptIn":  "Not authorized — excluded from campaigns",
+                          "originalDocument":  "{{number}} (original: {{original}})",
+                          "statusChanged":  "Registration updated.",
+                          "greeting":  "Hi {{name}}!",
+                          "reference":  "Your registration for {{event}} ({{modality}}), code {{code}}",
+                          "confirmedMessage":  "{{greeting}} {{reference}} is confirmed. See you at the start!",
+                          "pendingMessage":  "{{greeting}} {{reference}} is listed as {{status}}. The balance is {{balance}}. When you transfer, send us the transaction number so we can confirm it.",
+                          "documentType":  {
+                                               "Ci":  "ID card",
+                                               "Dni":  "National ID",
+                                               "Passport":  "Passport",
+                                               "ForeignerId":  "Foreigner ID",
+                                               "Rut":  "RUT",
+                                               "Cpf":  "CPF",
+                                               "Other":  "Other"
+                                           },
+                          "rule":  {
+                                       "None":  "No rule",
+                                       "TransactionNumber":  "By transaction number",
+                                       "AmountAndPayer":  "By amount and payer",
+                                       "Manual":  "Manual"
+                                   },
+                          "order":  {
+                                        "DateDesc":  "Newest first",
+                                        "DateAsc":  "Oldest first",
+                                        "LastName":  "Last name",
+                                        "Bib":  "Bib",
+                                        "Modality":  "Modality"
+                                    },
+                          "batchHelp":  "It will apply to {{count}} selected registrations. Those not paid, or whose Athlete Portal balance cannot be reverted, are skipped.",
+                          "statusLabel":  {
+                                              "Draft":  "Draft",
+                                              "Pending":  "Pending",
+                                              "Paid":  "Paid",
+                                              "UnderReview":  "Under review",
+                                              "Expired":  "Expired",
+                                              "Cancelled":  "Cancelled",
+                                              "Refunded":  "Refunded"
+                                          },
+                          "withoutResult":  "No result",
+                          "pendingCount":  "Pending",
+                          "selected":  "selected",
+                          "pageOf":  "of"
+                      }
+}

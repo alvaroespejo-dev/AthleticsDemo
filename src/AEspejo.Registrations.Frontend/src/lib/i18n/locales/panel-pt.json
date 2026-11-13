@@ -1,0 +1,22 @@
+{
+  "athletes": {
+    "description": "Cadastro único de participantes de todos os eventos. Uma linha por pessoa.",
+    "search": "Buscar",
+    "searchPlaceholder": "Documento, nome, sobrenome, celular ou e-mail"
+  },
+  "registrants": {
+    "description": "Lista e status de pagamento dos participantes.",
+    "empty": "Ainda não há eventos",
+    "emptyMessage": "Crie um evento e publique seu formulário para começar a receber inscrições."
+  },
+  "reports": {
+    "title": "Relatório mestre",
+    "description": "Inscritos, arrecadação, categorias e camisetas em uma única consulta.",
+    "generating": "Gerando relatório mestre…"
+  },
+  "campaigns": {
+    "description": "Envios em massa pela API oficial da Meta, com status por destinatário.",
+    "empty": "Ainda não há campanhas",
+    "emptyMessage": "Crie uma audiência em “Buscar participantes” e envie sua primeira promoção de lá."
+  }
+}

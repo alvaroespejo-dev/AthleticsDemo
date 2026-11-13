@@ -1,0 +1,18 @@
+{
+    "settingsPage":  {
+                         "garment":  {
+                                         "TShirt":  "Polera",
+                                         "Singlet":  "Malla"
+                                     },
+                         "rowEdit":  "Editar {{name}}",
+                         "rowDelete":  "Eliminar {{name}}",
+                         "examples":  {
+                                          "size":  "M",
+                                          "item":  "Polera oficial",
+                                          "category":  "Master A"
+                                      },
+                         "categoryHelp":  "La edad se evalúa al día del evento, no al de inscripción. Dos rangos no pueden cubrir la misma edad: el atleta caería en ambos y la premiación quedaría ambigua.",
+                         "moneySportAmount":  "Abono Athlete Portal por carrera terminada",
+                         "moneySportAmountHelp":  "Se acredita al atleta cuando su resultado queda en Finalizó."
+                     }
+}
