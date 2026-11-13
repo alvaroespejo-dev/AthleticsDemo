@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#374151"/>
+    </marker>
+  </defs>
+  <rect width="960" height="560" fill="#ffffff"/>
+  <text x="480" y="34" text-anchor="middle" font-size="20" font-weight="600" fill="#111827">Backend layers (com.aespejo.registrations)</text>
+
+  <rect x="60" y="60" width="840" height="90" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="90" y="90" font-size="15" font-weight="600" fill="#312e81">api</text>
+  <text x="90" y="112" font-size="12" fill="#4b5563">REST controllers per area: catalog, registration, payment, athlete, portal, moneysport, marketing, media,</text>
+  <text x="90" y="130" font-size="12" fill="#4b5563">report, settings, security, webhook, publicsite. Validation, DTO mapping and security policies.</text>
+
+  <rect x="60" y="180" width="840" height="90" rx="12" fill="#ecfeff" stroke="#0891b2" stroke-width="2"/>
+  <text x="90" y="210" font-size="15" font-weight="600" fill="#164e63">application</text>
+  <text x="90" y="232" font-size="12" fill="#4b5563">Use cases per area (services) with transactions. Coordinates domain rules, files, payments and messages.</text>
+  <text x="90" y="250" font-size="12" fill="#4b5563">Returns view records, never JPA entities.</text>
+
+  <rect x="60" y="300" width="840" height="90" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="90" y="330" font-size="15" font-weight="600" fill="#14532d">domain</text>
+  <text x="90" y="352" font-size="12" fill="#4b5563">JPA entities (Event, Modality, Registration, Payment, Athlete, Settings...), enums and domain services</text>
+  <text x="90" y="370" font-size="12" fill="#4b5563">(pricing, age categories, payment reconciliation).</text>
+
+  <rect x="60" y="420" width="410" height="110" rx="12" fill="#fefce8" stroke="#ca8a04" stroke-width="2"/>
+  <text x="90" y="450" font-size="15" font-weight="600" fill="#713f12">infrastructure</text>
+  <text x="90" y="472" font-size="12" fill="#4b5563">Spring Data repositories, WhatsApp client,</text>
+  <text x="90" y="490" font-size="12" fill="#4b5563">file storage, security configuration and JWT.</text>
+
+  <rect x="490" y="420" width="410" height="110" rx="12" fill="#f5f5f4" stroke="#78716c" stroke-width="2"/>
+  <text x="520" y="450" font-size="15" font-weight="600" fill="#292524">common</text>
+  <text x="520" y="472" font-size="12" fill="#4b5563">Exceptions and problem responses, paging,</text>
+  <text x="520" y="490" font-size="12" fill="#4b5563">i18n messages (es, en, pt) and upload checks.</text>
+
+  <line x1="480" y1="150" x2="480" y2="178" stroke="#374151" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="480" y1="270" x2="480" y2="298" stroke="#374151" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="265" y1="418" x2="265" y2="392" stroke="#374151" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="275" y="410" font-size="11" fill="#374151">implements the ports</text>
+</svg>

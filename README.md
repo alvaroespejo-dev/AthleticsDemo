@@ -25,6 +25,91 @@ through i18n. The full rule and its exceptions are in [`CLAUDE.md`](CLAUDE.md) a
 | `docs/` | Project documentation and glossary |
 | `specs/` | Feature specifications (spec, plan, tasks) |
 
+## Technical overview
+
+| Area | Technology |
+|---|---|
+| Backend | Java 21, Spring Boot 3.5, Spring Web, Spring Data JPA, Spring Security with JWT, Flyway, springdoc (OpenAPI) |
+| Database | SQLite (default, a single file) or PostgreSQL 17/18 with the `postgresql` profile |
+| Admin panel | Next.js 15 (static export), React 19, TanStack Query, Tailwind CSS, i18next (English by default; Spanish and Portuguese) |
+| Landing | Vite, plain HTML/JavaScript, with the public event calendar |
+| Hosting | Azure Static Web Apps (landing and panel under `/panel`) and Azure App Service on Linux (API) |
+| CI/CD | GitHub Actions: CI on every push and pull request, deploy to Azure after a successful CI run on `main` |
+
+### Main functional areas
+
+- **Catalog:** events, modalities (distances), price tiers by date, kits and their items, sizes, and age categories generated from templates.
+- **Registration:** public form with a liability waiver, reservations that expire, a document lookup that pre-fills known athletes, and kit size selection.
+- **Payments:** payments recorded by hand or reconciled from bank statements, with a payment tolerance and a fixed service fee per event.
+- **Athlete base:** athletes reused across editions, with import of spreadsheets and opt-in tracking for marketing.
+- **Money Sport:** credit per finished event, applied as a discount on the next registration.
+- **Athlete portal:** athletes sign in with their document to see their registrations, complete their account and claim past registrations.
+- **Campaigns:** WhatsApp messages to segments of athletes through the WhatsApp Cloud API, with webhook handling for delivery status.
+- **Reports and settings:** operational reports and organization settings, including the currency shown with every amount (USD by default).
+
+### Security and roles
+
+- The panel signs in with a username and password and receives a JWT. Administrative endpoints are protected by role policies.
+- Roles: `Admin`, `Cashier`, `KitStaff` and `ReadOnly`.
+- Public endpoints (`/api/public/**`) expose only the event catalog, the sign-up and the organization name and currency. The API never returns the internal settings or the fees to the public.
+- Uploaded files are checked by their content (image and document signatures), not by their extension.
+
+### Internationalization
+
+- The API returns validation and business messages in the language of the request (`Accept-Language`): Spanish, English or Portuguese.
+- The panel and the public pages use i18next. English is the default; the language can be changed in the header and is remembered in the browser.
+- Text stored in the database (event names, waiver text) is written by the organizer and is not translated.
+
+## Architecture
+
+### System context
+
+The browser reaches a single Static Web App for the landing and the panel. The panel calls the REST API
+on App Service across origins, so the API must list the site origins in `CORS_ORIGINS`.
+
+![System context](docs/architecture/system-context.svg)
+
+### Backend layers
+
+The backend is organized in layers under `com.aespejo.registrations`. Controllers depend on application services,
+services depend on domain entities and repositories, and infrastructure implements the ports used by the application
+(persistence, WhatsApp, file storage). Application services return view records, so JPA entities never leave the service layer.
+
+![Backend layers](docs/architecture/backend-layers.svg)
+
+| Package | Responsibility |
+|---|---|
+| `api` | REST controllers grouped by functional area |
+| `application` | Use cases with transactions, one package per area |
+| `domain` | JPA entities, enums and domain services |
+| `infrastructure` | Repositories, WhatsApp client, file storage, security configuration |
+| `common` | Exceptions and problem responses, paging, i18n messages, upload checks |
+
+### Database and migrations
+
+- Flyway applies `db/migration/common` (reference data) and then the folder of the active database
+  (`sqlite` or `postgresql`). Each migration is versioned, so an existing installation only receives the new ones.
+- Hibernate runs with `ddl-auto: validate`: the application refuses to start if the entities do not match the schema.
+- SQLite runs in WAL mode with foreign keys enabled. PostgreSQL is supported by the same entities through the `postgresql` profile.
+
+### Delivery pipeline
+
+Every push to `main` runs the CI workflow, which compiles and tests the backend, type-checks and builds the panel,
+and builds the landing. When CI succeeds, the deploy workflow publishes the API jar to App Service and the combined
+landing and panel to the Static Web App, using the same commit. Pull requests get a Static Web App preview.
+
+![Delivery pipeline](docs/architecture/deployment.svg)
+
+## Screenshots
+
+| Landing | Public registration form |
+|---|---|
+| ![Landing page](docs/screenshots/01-landing.png) | ![Public registration form](docs/screenshots/03-public-registration.png) |
+
+| Admin sign-in | Athlete portal |
+|---|---|
+| ![Admin sign-in](docs/screenshots/02-panel-login.png) | ![Athlete portal sign-in](docs/screenshots/04-athlete-portal.png) |
+
 ## Requirements
 
 - JDK 21
